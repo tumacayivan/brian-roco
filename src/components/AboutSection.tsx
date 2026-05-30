@@ -22,17 +22,12 @@ const AboutSection = () => {
           className="space-y-6 text-foreground leading-relaxed"
         >
           <p className="font-semibold text-lg md:text-xl">
-            <span className="font-bold text-primary">Creative and detail-oriented Property Specialist</span> with expertise in <span className="highlight-text">real estate</span>
-            and <span className="highlight-text">digital content creation</span>. Experienced in assisting clients with property
-            inquiries, presenting property listings, and guiding clients through purchase
-            decisions. <span className="font-bold">Skilled in video editing and graphic design</span>, producing high-quality
-            visual content that enhances property presentations and marketing materials.
+            <span className="font-bold text-primary">Graphic Designer & Video Editor</span> with strong Adobe skills and a passion for <span className="highlight-text">visual storytelling</span>. I specialize in <span className="highlight-text">generative AI</span> for video creation and editing, leveraging next-gen tools like <span className="font-bold">Google Flow, ElevenLabs, and Runway</span> to help businesses streamline production and build high-converting video content.
           </p>
           <p className="font-semibold text-lg md:text-xl">
-            Proficient in <span className="highlight-text">industry-standard tools</span> such as <span className="font-bold">Adobe Creative Suite</span>
-            (Premiere Pro, After Effects, Photoshop, Illustrator), with strong skills in
-            <span className="highlight-text"> critical thinking</span>, <span className="highlight-text">leadership</span>, <span className="highlight-text">communication</span>, and <span className="highlight-text">multitasking</span>. Passionate about
-            <span className="highlight-text"> digital art</span>, <span className="highlight-text">drawing</span>, and creating engaging visual content.
+            Proficient in <span className="highlight-text">industry-standard tools</span> such as the <span className="font-bold">Adobe Creative Suite</span>
+            (Premiere Pro, After Effects, Photoshop, Illustrator) alongside <span className="highlight-text">web design</span> and <span className="highlight-text">real estate</span> experience. Skilled in
+            <span className="highlight-text"> communication</span>, <span className="highlight-text">time management</span>, <span className="highlight-text">color grading</span>, and <span className="highlight-text">AI prompting</span>, with a focus on creating engaging visual content.
           </p>
         </motion.div>
 
@@ -44,9 +39,9 @@ const AboutSection = () => {
           className="grid grid-cols-2 gap-4 md:gap-6"
         >
           {[
-            { label: "Location", value: "Pasay City, Philippines" },
-            { label: "Email", value: "rocobrian28@gmail.com" },
-            { label: "Phone", value: "09456323478" },
+            { label: "Location", value: "Cavite, Philippines" },
+            { label: "Email", value: "rocobrian06@gmail.com" },
+            { label: "Phone", value: "+63 964 170 5633" },
             // { label: "Website", value: "www.reallygreatsite.com" },
             { label: "Languages", value: "English, Filipino/Tagalog, Native Minasbate" },
           ].map((item) => (

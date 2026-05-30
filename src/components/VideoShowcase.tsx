@@ -29,14 +29,25 @@ const videoCategories = [
   },
   {
     name: "AI Videos",
-    folderLink: "https://drive.google.com/drive/folders/1b3b0tTKy3Nihf9dWhKh7PwJk47slfxNE?usp=drive_link",
+    folderLink: "https://drive.google.com/drive/folders/1xXgQ1eK4WCOx4VclNvhADPYerI8_F6YS?usp=sharing",
     videos: [
-      { id: "1Q9pgVMD8RiNDL9zyoOEW0kcHgOdoNW5F", title: "AI Video 1", driveLink: "https://drive.google.com/file/d/1Q9pgVMD8RiNDL9zyoOEW0kcHgOdoNW5F/view?usp=drive_link" },
-      { id: "1-Is5dnzrUG6-DZyjYQpXZuuixfJ52b3a", title: "AI Video 2", driveLink: "https://drive.google.com/file/d/1-Is5dnzrUG6-DZyjYQpXZuuixfJ52b3a/view?usp=drive_link" },
-      { id: "1if7K64dndKsjgCz2QFdPQB0c-PqDlm0y", title: "AI Video 3", driveLink: "https://drive.google.com/file/d/1if7K64dndKsjgCz2QFdPQB0c-PqDlm0y/view?usp=drive_link" },
-      { id: "1olt17wzcihPHojy1IoNZmwHV4DYqJgqZ", title: "AI Video 4", driveLink: "https://drive.google.com/file/d/1olt17wzcihPHojy1IoNZmwHV4DYqJgqZ/view?usp=drive_link" },
-      { id: "1AXFy158z3vNRFKAwKPQQ2OVEIDIRVNgx", title: "AI Video 5", driveLink: "https://drive.google.com/file/d/1AXFy158z3vNRFKAwKPQQ2OVEIDIRVNgx/view?usp=drive_link" },
-      { id: "1spNPNu6P1bme_luNy_DGCmi0V9OHDEh8", title: "AI Video 6", driveLink: "https://drive.google.com/file/d/1spNPNu6P1bme_luNy_DGCmi0V9OHDEh8/view?usp=drive_link" },
+      { id: "1Z2eevSVZCNp_iw-CjwhCfcvJgPAQFIQs", title: "AI Video 1", driveLink: "https://drive.google.com/file/d/1Z2eevSVZCNp_iw-CjwhCfcvJgPAQFIQs/view?usp=sharing" },
+      { id: "1nsc0JJFismuIbmrNXzGRIM32-aOxKPYl", title: "AI Video 2", driveLink: "https://drive.google.com/file/d/1nsc0JJFismuIbmrNXzGRIM32-aOxKPYl/view?usp=sharing" },
+      { id: "10onuUhqQA2n07Px9buaPry9lirC-3wPc", title: "AI Video 3", driveLink: "https://drive.google.com/file/d/10onuUhqQA2n07Px9buaPry9lirC-3wPc/view?usp=sharing" },
+      { id: "1WG4BE4OctpTpjCCwn6-he6ZOn6bCypyB", title: "AI Video 4", driveLink: "https://drive.google.com/file/d/1WG4BE4OctpTpjCCwn6-he6ZOn6bCypyB/view?usp=sharing" },
+      { id: "1h1ZXQfw8dolxcmRIf95ATsOZO3o0wsXu", title: "AI Video 5", driveLink: "https://drive.google.com/file/d/1h1ZXQfw8dolxcmRIf95ATsOZO3o0wsXu/view?usp=sharing" },
+      { id: "1-8Ln6qh15eazWXAdciURNU8GbQPEq2Ac", title: "AI Video 6", driveLink: "https://drive.google.com/file/d/1-8Ln6qh15eazWXAdciURNU8GbQPEq2Ac/view?usp=sharing" },
+      { id: "1XTsX3dZaqenOZStJqWcJR6F9nZDt6ayg", title: "AI Video 7", driveLink: "https://drive.google.com/file/d/1XTsX3dZaqenOZStJqWcJR6F9nZDt6ayg/view?usp=sharing" },
+      { id: "1vohpjFCuYi1QEmfEZkzSUyybL-Ok1B0C", title: "AI Video 8", driveLink: "https://drive.google.com/file/d/1vohpjFCuYi1QEmfEZkzSUyybL-Ok1B0C/view?usp=sharing" },
+      { id: "1VAChnJ8-ArRM_fxtKzlX_UWCuFbhp7es", title: "AI Video 9", driveLink: "https://drive.google.com/file/d/1VAChnJ8-ArRM_fxtKzlX_UWCuFbhp7es/view?usp=sharing" },
+      { id: "1jYCmety_a-afMpgbTrp-rTf9iBg7-cTK", title: "AI Video 10", driveLink: "https://drive.google.com/file/d/1jYCmety_a-afMpgbTrp-rTf9iBg7-cTK/view?usp=sharing" },
+      { id: "1KX0CWdidG9Tv3A5hht5gHN007vb7DLHk", title: "AI Video 11", driveLink: "https://drive.google.com/file/d/1KX0CWdidG9Tv3A5hht5gHN007vb7DLHk/view?usp=sharing" },
+      { id: "139UJfiU-izsnwZjl6eyxeebJtTvGEaz7", title: "AI Video 12", driveLink: "https://drive.google.com/file/d/139UJfiU-izsnwZjl6eyxeebJtTvGEaz7/view?usp=sharing" },
+      { id: "11ASUg0ZrBmrFYcnqN02pJyMatA8kcYm5", title: "AI Video 13", driveLink: "https://drive.google.com/file/d/11ASUg0ZrBmrFYcnqN02pJyMatA8kcYm5/view?usp=sharing" },
+      { id: "1xSI9as9n2AaEdCOM8ttPgtO7Q5KfDWKV", title: "AI Video 14", driveLink: "https://drive.google.com/file/d/1xSI9as9n2AaEdCOM8ttPgtO7Q5KfDWKV/view?usp=sharing" },
+      { id: "18P6UULgkbgB-IW61uUVIp9164R4m5RH6", title: "AI Video 15", driveLink: "https://drive.google.com/file/d/18P6UULgkbgB-IW61uUVIp9164R4m5RH6/view?usp=sharing" },
+      { id: "1398jmyaexU2WFZNPdiG0x1b0Xo7wriaj", title: "AI Video 16", driveLink: "https://drive.google.com/file/d/1398jmyaexU2WFZNPdiG0x1b0Xo7wriaj/view?usp=sharing" },
+      { id: "18FxLzAxnZWB_QO0ct-2FmszpiFVf1pBN", title: "AI Video 17", driveLink: "https://drive.google.com/file/d/18FxLzAxnZWB_QO0ct-2FmszpiFVf1pBN/view?usp=sharing" },
     ],
   },
   {
@@ -142,6 +153,20 @@ const videoCategories = [
       { id: "1A_Oh9kC8HiZBzBT9iHJ2pOV2JA2GYxm8", title: "Vlog 5", driveLink: "https://drive.google.com/file/d/1A_Oh9kC8HiZBzBT9iHJ2pOV2JA2GYxm8/view?usp=drive_link" },
     ],
   },
+  {
+    name: "Random",
+    folderLink: "https://drive.google.com/drive/folders/1xXgQ1eK4WCOx4VclNvhADPYerI8_F6YS?usp=sharing",
+    videos: [
+      { id: "1QSukmj-MahdVKrrdK81uaYYksM7Zjmk8", title: "Random 1", driveLink: "https://drive.google.com/file/d/1QSukmj-MahdVKrrdK81uaYYksM7Zjmk8/view?usp=drive_link" },
+      { id: "1xtFqXmXNZzWBmCg-ubLDWs-lS85g8msp", title: "Random 2", driveLink: "https://drive.google.com/file/d/1xtFqXmXNZzWBmCg-ubLDWs-lS85g8msp/view?usp=drive_link" },
+      { id: "1OQLCI4QWpWbvI8VjlUDWdy0hCWGp0T-u", title: "Random 3", driveLink: "https://drive.google.com/file/d/1OQLCI4QWpWbvI8VjlUDWdy0hCWGp0T-u/view?usp=drive_link" },
+      { id: "1iG1pyxZcKWzibsRJ9odiCmoptCSbOecy", title: "Random 4", driveLink: "https://drive.google.com/file/d/1iG1pyxZcKWzibsRJ9odiCmoptCSbOecy/view?usp=drive_link" },
+      { id: "1wcwVRPTXHa6vp2x7CWl48ikKVJBtmmpy", title: "Random 5", driveLink: "https://drive.google.com/file/d/1wcwVRPTXHa6vp2x7CWl48ikKVJBtmmpy/view?usp=drive_link" },
+      { id: "17HU8RQTwLR3iI5Q75G78ctwsdcagOclq", title: "Random 6", driveLink: "https://drive.google.com/file/d/17HU8RQTwLR3iI5Q75G78ctwsdcagOclq/view?usp=drive_link" },
+      { id: "1xgGQK5zCB1VF2Bx3RZK6gnShyExUX5R8", title: "Random 7", driveLink: "https://drive.google.com/file/d/1xgGQK5zCB1VF2Bx3RZK6gnShyExUX5R8/view?usp=drive_link" },
+      { id: "1ArONvOsSIfk6I96PZg7t13v7n1cx3zZ1", title: "Random 8", driveLink: "https://drive.google.com/file/d/1ArONvOsSIfk6I96PZg7t13v7n1cx3zZ1/view?usp=drive_link" },
+    ],
+  },
 ];
 
 // Flatten all videos for the showcase
@@ -177,7 +202,7 @@ const VideoShowcase = () => {
         <p className="text-foreground font-semibold text-lg md:text-xl text-center mb-8 font-body max-w-3xl mx-auto">
           A selection of <span className="highlight-text">video edits</span>, <span className="highlight-text">reels</span>, <span className="highlight-text">montages</span>, and <span className="highlight-text">creative video content</span> with autoplay previews.
         </p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {videoFiles.map((video, index) => (
             <motion.div
               key={video.id}
@@ -185,7 +210,7 @@ const VideoShowcase = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="group relative overflow-hidden rounded-lg glass-card cursor-pointer aspect-video"
+              className="group relative overflow-hidden rounded-lg glass-card cursor-pointer aspect-[9/16]"
               onClick={() => setSelectedVideo(index)}
             >
               <div className="w-full h-full relative bg-secondary/20">
@@ -229,7 +254,7 @@ const VideoShowcase = () => {
                 >
                   <X className="w-6 h-6" />
                 </button>
-                
+
                 {videoFiles.length > 1 && (
                   <>
                     <button

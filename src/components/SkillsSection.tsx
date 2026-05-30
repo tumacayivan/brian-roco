@@ -18,14 +18,24 @@ const skillCategories = [
       "Adobe After Effects",
       "CapCut Pro",
       "Final Cut Pro",
-      "Power Director",
+    ],
+  },
+  {
+    title: "AI Generation Tools",
+    skills: [
+      "Google Flow",
+      "OpenAI Sora 2 / Sora 2 Pro",
+      "Runway Gen-4.5",
+      "ElevenLabs",
+      "HeyGen",
+      "Higgsfield",
+      "MagicShot",
     ],
   },
   {
     title: "Web Design & Development",
     skills: [
       "WordPress",
-      "Wix",
       "HTML/CSS",
       "UI/UX Design",
       "SEO Basics",

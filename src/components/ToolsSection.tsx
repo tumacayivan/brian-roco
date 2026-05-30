@@ -25,7 +25,6 @@ const toolImages = [
 ];
 
 const tools = [
-  // Top Row - Creative and Video Editing Tools (9 tools)
   { name: "Adobe Premiere Pro", image: toolImages[0] },
   { name: "Adobe After Effects", image: toolImages[1] },
   { name: "Adobe Audition", image: toolImages[2] },
@@ -35,8 +34,6 @@ const tools = [
   { name: "Adobe Photoshop", image: toolImages[6] },
   { name: "Adobe Illustrator", image: toolImages[7] },
   { name: "Adobe InDesign", image: toolImages[8] },
-  
-  // Middle Row - Productivity, Marketing, and Communication Tools (7 tools)
   { name: "Google Docs", image: toolImages[9] },
   { name: "Google Sheets", image: toolImages[10] },
   { name: "HighLevel", image: toolImages[11] },
@@ -44,8 +41,6 @@ const tools = [
   { name: "Mailchimp", image: toolImages[13] },
   { name: "Slack", image: toolImages[14] },
   { name: "VistaSocial", image: toolImages[15] },
-  
-  // Bottom Row - Design, Project Management, and Communication Tools (4 tools)
   { name: "Canva", image: toolImages[16] },
   { name: "ClickUp", image: toolImages[17] },
   { name: "Monday.com", image: toolImages[18] },
@@ -53,11 +48,6 @@ const tools = [
 ];
 
 const ToolsSection = () => {
-  // Organize tools into rows (matching the image layout)
-  const topRow = tools.slice(0, 9);
-  const middleRow = tools.slice(9, 16);
-  const bottomRow = tools.slice(16);
-
   return (
     <section id="tools" className="section-padding bg-secondary/30">
       <div className="max-w-6xl mx-auto">
@@ -77,111 +67,30 @@ const ToolsSection = () => {
           </p>
         </motion.div>
 
-        <div className="bg-white p-6 md:p-8 lg:p-12 rounded-2xl shadow-lg">
-          {/* Top Row - Creative and Video Editing Tools */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-9 gap-3 md:gap-4 mb-4 md:mb-6"
-          >
-            {topRow.map((tool, index) => (
-              <motion.div
-                key={tool.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="group"
-              >
-                <div
-                  className="rounded-lg overflow-hidden aspect-square bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 p-2"
-                  title={tool.name}
-                >
-                  <img
-                    src={`/tools/${tool.image}`}
-                    alt={tool.name}
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-                <p className="text-sm md:text-base font-semibold text-foreground text-center mt-2 font-body truncate">
-                  {tool.name}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Middle Row - Productivity, Marketing, and Communication Tools */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4 mb-4 md:mb-6"
-          >
-            {middleRow.map((tool, index) => (
-              <motion.div
-                key={tool.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="group"
-              >
-                <div
-                  className="rounded-lg overflow-hidden aspect-square bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 p-2"
-                  title={tool.name}
-                >
-                  <img
-                    src={`/tools/${tool.image}`}
-                    alt={tool.name}
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-                <p className="text-sm md:text-base font-semibold text-foreground text-center mt-2 font-body truncate">
-                  {tool.name}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Bottom Row - Design, Project Management, and Communication Tools */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 md:gap-4"
-          >
-            {bottomRow.map((tool, index) => (
-              <motion.div
-                key={tool.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.3, delay: index * 0.05 }}
-                className="group"
-              >
-                <div
-                  className="rounded-lg overflow-hidden aspect-square bg-white flex items-center justify-center transition-transform duration-300 group-hover:scale-110 p-2"
-                  title={tool.name}
-                >
-                  <img
-                    src={`/tools/${tool.image}`}
-                    alt={tool.name}
-                    className="w-full h-full object-contain"
-                    loading="lazy"
-                  />
-                </div>
-                <p className="text-sm md:text-base font-semibold text-foreground text-center mt-2 font-body truncate">
-                  {tool.name}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
+        {/* Uniform responsive grid of tool tiles */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+          {tools.map((tool, index) => (
+            <motion.div
+              key={tool.name}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.3, delay: (index % 5) * 0.05 }}
+              className="group flex flex-col items-center justify-center gap-3 bg-white border border-border/60 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+                <img
+                  src={`/tools/${tool.image}`}
+                  alt={tool.name}
+                  className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                  loading="lazy"
+                />
+              </div>
+              <p className="text-sm md:text-base font-semibold text-foreground text-center font-body leading-tight">
+                {tool.name}
+              </p>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

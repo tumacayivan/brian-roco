@@ -129,7 +129,7 @@ const GraphicsShowcase = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="group relative overflow-hidden rounded-lg glass-card cursor-pointer aspect-square"
+              className="group relative overflow-hidden rounded-lg glass-card cursor-pointer aspect-[9/16]"
               onClick={() => setSelectedImage(index)}
             >
               <div className="w-full h-full overflow-hidden bg-secondary/20">

@@ -2,11 +2,32 @@ import { motion } from "framer-motion";
 
 const experiences = [
   {
-    title: "Property Specialist",
-    company: "Real Estate",
-    period: "1 year",
+    title: "Graphic Designer",
+    company: "UZ Marketing (U.S.)",
+    period: "Graphic Design",
     description:
-      "Assisted clients in finding suitable properties, presented property listings and explained features to buyers, and helped guide clients through property inquiries and purchase decisions. Focused on understanding client needs and providing personalized property consultation services.",
+      "Designed marketing materials using Adobe Illustrator and Photoshop, including flyers, premium postcards, yard signs, banners, car magnets, brochures, sidewalk signage, business cards, stickers, and t-shirts — all aligned to brand identity and client specifications.",
+  },
+  {
+    title: "Graphic Designer & Video Editor",
+    company: "Rovawork Philippines (Timmerman Industries)",
+    period: "Video & Design",
+    description:
+      "Collaborated with a dynamic creative team to produce engaging video content for corporate clients, marketing initiatives, and digital platforms. Transformed raw footage into polished, high-quality visual narratives that reflected client branding and strategic goals.",
+  },
+  {
+    title: "Graphic Designer",
+    company: "Fundraiser Blankets",
+    period: "Product Design",
+    description:
+      "Designed product graphics for blankets, towels, and rally items for various schools using Adobe Photoshop, Adobe Illustrator, and Canva. Created visually appealing layouts that matched brand identity and client specifications.",
+  },
+  {
+    title: "Property Specialist",
+    company: "Ayala Land, Inc. (Philippines)",
+    period: "Real Estate",
+    description:
+      "Managed real estate transactions and client acquisitions for the Philippines' leading developer. Excelled in lead generation, contract negotiation, and marketing strategies, providing tailored investment solutions while ensuring a seamless buying experience.",
   },
   {
     title: "Web Designer",
@@ -14,27 +35,6 @@ const experiences = [
     period: "2024–Present",
     description:
       "Created and developed websites that were both visually engaging and user-friendly, customized to meet each client's needs. Focused on blending creativity with functionality, ensuring every site offered a smooth user experience while staying true to the client's brand identity.",
-  },
-  {
-    title: "Graphic Designer & Video Editor",
-    company: "Freelance (Handled Multiple Clients)",
-    period: "2021–Present",
-    description:
-      "Partnered with a wide range of clients including content creators, small businesses, marketing agencies, and independent filmmakers. Work centers on producing visually captivating and emotionally resonant videos that align with each client's specific objectives.",
-  },
-  {
-    title: "Graphic Designer, Social Media Manager & Video Editor",
-    company: "Next Generation Church (Jesus Culture)",
-    period: "2017–2018",
-    description:
-      "Inspired believers worldwide by uniting in faith through powerful and engaging worship experiences. Produced content providing opportunities for worship, fellowship, and authentic connection, touching the lives of people from diverse backgrounds.",
-  },
-  {
-    title: "Graphic Designer and Video Editor",
-    company: "Rovawork Philippines",
-    period: "2021–2023",
-    description:
-      "Collaborated with a dynamic creative team to produce engaging video content for corporate clients, marketing initiatives, and digital platforms. Transformed raw footage into polished, high-quality visual narratives that reflected client branding and strategic goals.",
   },
 ];
 

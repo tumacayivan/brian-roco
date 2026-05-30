@@ -27,9 +27,9 @@ const ContactSection = () => {
           className="flex flex-col sm:flex-row gap-6 justify-center"
         >
           {[
-            { icon: Mail, label: "rocobrian28@gmail.com", href: "mailto:rocobrian28@gmail.com" },
-            { icon: Phone, label: "09456323478", href: "tel:09456323478" },
-            { icon: MapPin, label: "Pasay City, Philippines", href: "#" },
+            { icon: Mail, label: "rocobrian06@gmail.com", href: "mailto:rocobrian06@gmail.com" },
+            { icon: Phone, label: "+63 964 170 5633", href: "tel:+639641705633" },
+            { icon: MapPin, label: "Cavite, Philippines", href: "#" },
           ].map((item) => (
             <a
               key={item.label}

@@ -2,19 +2,14 @@ import { motion } from "framer-motion";
 
 const education = [
   {
-    school: "Dr. Emilio B. Espinosa Sr. Memorial State College of Agriculture and Technology",
+    school: "Dr. Emilio B. Espinosa Sr. Memorial State College of Agriculture and Technology (DEBESMSCAT)",
     degree: "Bachelor of Secondary Education – Major in English",
-    period: "Completed 3 years in college",
+    period: "2020–2024",
   },
   {
     school: "Aroroy National High School",
-    degree: "Secondary Education",
-    period: "2012–2018",
-  },
-  {
-    school: "Aroroy East Central School",
-    degree: "Elementary Education",
-    period: "2006–2011",
+    degree: "Junior High School & Senior High School",
+    period: "2014–2020",
   },
 ];
 
