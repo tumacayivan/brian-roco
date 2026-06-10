@@ -34,7 +34,7 @@ const categories = [
 const PortfolioSection = () => {
   return (
     <section id="portfolio" className="section-padding bg-secondary/30">
-      <div className="max-w-6xl mx-auto">
+      <div className="w-full">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -101,7 +101,7 @@ const PortfolioSection = () => {
           className="text-center"
         >
           <a
-            href="https://drive.google.com/drive/folders/1-K_ir1dY1wtNaT8qPPF4EMQVQxgMObGZ"
+            href="https://drive.google.com/drive/folders/1xXgQ1eK4WCOx4VclNvhADPYerI8_F6YS"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-10 py-4 bg-primary text-primary-foreground font-body font-bold text-base md:text-lg tracking-wider uppercase rounded-lg hover:bg-primary/90 transition-colors shadow-lg"

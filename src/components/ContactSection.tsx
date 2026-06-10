@@ -4,7 +4,7 @@ import { Mail, Phone, MapPin } from "lucide-react";
 const ContactSection = () => {
   return (
     <section id="contact" className="section-padding bg-secondary/30">
-      <div className="max-w-4xl mx-auto text-center">
+      <div className="w-full text-center">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}

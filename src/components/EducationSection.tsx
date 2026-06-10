@@ -15,7 +15,7 @@ const education = [
 
 const EducationSection = () => {
   return (
-    <section id="education" className="section-padding max-w-6xl mx-auto">
+    <section id="education" className="section-padding w-full">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
