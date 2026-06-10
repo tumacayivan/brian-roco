@@ -202,7 +202,7 @@ const VideoShowcase = () => {
         <p className="text-foreground font-semibold text-lg md:text-xl text-center mb-8 font-body max-w-3xl mx-auto">
           A selection of <span className="highlight-text">video edits</span>, <span className="highlight-text">reels</span>, <span className="highlight-text">montages</span>, and <span className="highlight-text">creative video content</span> with autoplay previews.
         </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
           {videoFiles.map((video, index) => (
             <motion.div
               key={video.id}
