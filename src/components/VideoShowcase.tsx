@@ -16,18 +16,6 @@ const getDriveVideoUrl = (fileId: string, autoplay: boolean = false) => {
 // Video portfolio organized by categories
 const videoCategories = [
   {
-    name: "Ad Edits",
-    folderLink: "https://drive.google.com/drive/folders/11L4AV16lwUziWI4Q7iW69pMtbjVQUoK_?usp=drive_link",
-    videos: [
-      { id: "1dKJvM_r5MEdHgpuu81y1VXRAKWi2hNWk", title: "Ad Edit 1", driveLink: "https://drive.google.com/file/d/1dKJvM_r5MEdHgpuu81y1VXRAKWi2hNWk/view?usp=drive_link" },
-      { id: "1mBv75WOUJjVgLFUafp7gHlhjzWYpW3VR", title: "Ad Edit 2", driveLink: "https://drive.google.com/file/d/1mBv75WOUJjVgLFUafp7gHlhjzWYpW3VR/view?usp=drive_link" },
-      { id: "1YnCvxFh-5jdXr1ZcsmmxDoYXP2c5RFd2", title: "Ad Edit 3", driveLink: "https://drive.google.com/file/d/1YnCvxFh-5jdXr1ZcsmmxDoYXP2c5RFd2/view?usp=drive_link" },
-      { id: "18zp1mzFhnez85z6mmFDAdvjQuBgW01oI", title: "Ad Edit 4", driveLink: "https://drive.google.com/file/d/18zp1mzFhnez85z6mmFDAdvjQuBgW01oI/view?usp=drive_link" },
-      { id: "1_A6IhHdfnzdu2PVewoi5ZOmUSwe2vAR3", title: "Ad Edit 5", driveLink: "https://drive.google.com/file/d/1_A6IhHdfnzdu2PVewoi5ZOmUSwe2vAR3/view?usp=drive_link" },
-      { id: "1fE-9Hh_K17V2iPpaBINvz57ZtOYq_4Y-", title: "Ad Edit 6", driveLink: "https://drive.google.com/file/d/1fE-9Hh_K17V2iPpaBINvz57ZtOYq_4Y-/view?usp=drive_link" },
-    ],
-  },
-  {
     name: "AI Videos",
     folderLink: "https://drive.google.com/drive/folders/1xXgQ1eK4WCOx4VclNvhADPYerI8_F6YS?usp=sharing",
     videos: [
@@ -48,109 +36,6 @@ const videoCategories = [
       { id: "18P6UULgkbgB-IW61uUVIp9164R4m5RH6", title: "AI Video 15", driveLink: "https://drive.google.com/file/d/18P6UULgkbgB-IW61uUVIp9164R4m5RH6/view?usp=sharing" },
       { id: "1398jmyaexU2WFZNPdiG0x1b0Xo7wriaj", title: "AI Video 16", driveLink: "https://drive.google.com/file/d/1398jmyaexU2WFZNPdiG0x1b0Xo7wriaj/view?usp=sharing" },
       { id: "18FxLzAxnZWB_QO0ct-2FmszpiFVf1pBN", title: "AI Video 17", driveLink: "https://drive.google.com/file/d/18FxLzAxnZWB_QO0ct-2FmszpiFVf1pBN/view?usp=sharing" },
-    ],
-  },
-  {
-    name: "Digital Products",
-    folderLink: "https://drive.google.com/drive/folders/1GGW8p22YUeh6C5zFoXlYrO0Xwu_4jB9u?usp=drive_link",
-    videos: [
-      { id: "1T_8c_1fR7jQkVMP9exqp3jUOd4TFCZhE", title: "Digital Product 1", driveLink: "https://drive.google.com/file/d/1T_8c_1fR7jQkVMP9exqp3jUOd4TFCZhE/view?usp=drive_link" },
-      { id: "1uk9gVk9uRiGXdb7vjmMxxN0aYYLFRMYc", title: "Digital Product 2", driveLink: "https://drive.google.com/file/d/1uk9gVk9uRiGXdb7vjmMxxN0aYYLFRMYc/view?usp=drive_link" },
-      { id: "1TFTyRcOIYxiJRSWrROY6u2IxOeuHq29_", title: "Digital Product 3", driveLink: "https://drive.google.com/file/d/1TFTyRcOIYxiJRSWrROY6u2IxOeuHq29_/view?usp=drive_link" },
-      { id: "1YQ8eh_BhsPc2oi2TgA6EnwPYM5mAX-jO", title: "Digital Product 4", driveLink: "https://drive.google.com/file/d/1YQ8eh_BhsPc2oi2TgA6EnwPYM5mAX-jO/view?usp=drive_link" },
-      { id: "14caIZ0fmMDS9XpLWRggyRketkvjKou59", title: "Digital Product 5", driveLink: "https://drive.google.com/file/d/14caIZ0fmMDS9XpLWRggyRketkvjKou59/view?usp=drive_link" },
-    ],
-  },
-  {
-    name: "Montage Videos",
-    folderLink: "https://drive.google.com/drive/folders/17p4g6jis_WrQGHqEAyapQPNInNMIwplJ?usp=drive_link",
-    videos: [
-      { id: "12N4fPIdf3BLeZR9qD7zDi-Hqo3IneniQ", title: "Montage Video 1", driveLink: "https://drive.google.com/file/d/12N4fPIdf3BLeZR9qD7zDi-Hqo3IneniQ/view?usp=drive_link" },
-      { id: "1piUzDzLFvZmI0lkQgdT5HIja_LZ0fSQl", title: "Montage Video 2", driveLink: "https://drive.google.com/file/d/1piUzDzLFvZmI0lkQgdT5HIja_LZ0fSQl/view?usp=drive_link" },
-      { id: "17DRQ6UweLA3nIErnCqBdYDtu1ALmnCUp", title: "Montage Video 3", driveLink: "https://drive.google.com/file/d/17DRQ6UweLA3nIErnCqBdYDtu1ALmnCUp/view?usp=drive_link" },
-      { id: "1eVm3Q4uyWICtMHIJ91nbJF2W9iKt4bNw", title: "Montage Video 4", driveLink: "https://drive.google.com/file/d/1eVm3Q4uyWICtMHIJ91nbJF2W9iKt4bNw/view?usp=drive_link" },
-      { id: "1Got-KF4dRvipGodo9kvvLVeO6jWcxMoI", title: "Montage Video 5", driveLink: "https://drive.google.com/file/d/1Got-KF4dRvipGodo9kvvLVeO6jWcxMoI/view?usp=drive_link" },
-    ],
-  },
-  {
-    name: "Movie edits",
-    folderLink: "https://drive.google.com/drive/folders/1b3JWd81xJt75xm81qzm3gCAt6QWZ8tL0?usp=drive_link",
-    videos: [
-      { id: "1yR-kT3RT31pfwW7hz-XPYJweoxnSIUED", title: "Movie Edit 1", driveLink: "https://drive.google.com/file/d/1yR-kT3RT31pfwW7hz-XPYJweoxnSIUED/view?usp=drive_link" },
-      { id: "16M9BFNmDUYVoihwEFqF5AbbLxdlaCpl9", title: "Movie Edit 2", driveLink: "https://drive.google.com/file/d/16M9BFNmDUYVoihwEFqF5AbbLxdlaCpl9/view?usp=drive_link" },
-      { id: "1ImuY-_ASH31xbjuCJ-I7i_IE88PxvHH-", title: "Movie Edit 3", driveLink: "https://drive.google.com/file/d/1ImuY-_ASH31xbjuCJ-I7i_IE88PxvHH-/view?usp=drive_link" },
-      { id: "1wiy_eFS2uiRqBZn7MbbW2ZFHjFXsJbpx", title: "Movie Edit 4", driveLink: "https://drive.google.com/file/d/1wiy_eFS2uiRqBZn7MbbW2ZFHjFXsJbpx/view?usp=drive_link" },
-      { id: "1GC2sdSQg7QUNXHEq8LxA0zgu5l2hjMT2", title: "Movie Edit 5", driveLink: "https://drive.google.com/file/d/1GC2sdSQg7QUNXHEq8LxA0zgu5l2hjMT2/view?usp=drive_link" },
-    ],
-  },
-  {
-    name: "music videos",
-    folderLink: "https://drive.google.com/drive/folders/1SUyhQpTHHWa9G7NeTOH79LfEmO_Fv3Lt?usp=drive_link",
-    videos: [
-      { id: "1YaGkUQ6wGJ3zRihCcLl4J41zy1w3jPoL", title: "Music Video 1", driveLink: "https://drive.google.com/file/d/1YaGkUQ6wGJ3zRihCcLl4J41zy1w3jPoL/view?usp=drive_link" },
-      { id: "1hk1yz5tX9RBAzCfqmBPlBuY8QLFdrfYE", title: "Music Video 2", driveLink: "https://drive.google.com/file/d/1hk1yz5tX9RBAzCfqmBPlBuY8QLFdrfYE/view?usp=drive_link" },
-      { id: "1zJPCdpuCXlnnP8epcX40ogGtaevEEbAk", title: "Music Video 3", driveLink: "https://drive.google.com/file/d/1zJPCdpuCXlnnP8epcX40ogGtaevEEbAk/view?usp=drive_link" },
-      { id: "1LB2F0ny3nN3vwr9VgGan8EDlGSNyCjvQ", title: "Music Video 4", driveLink: "https://drive.google.com/file/d/1LB2F0ny3nN3vwr9VgGan8EDlGSNyCjvQ/view?usp=drive_link" },
-      { id: "1RHsdRy9-_ni6Ut1Z-c02Ac7-4YO1cun7", title: "Music Video 5", driveLink: "https://drive.google.com/file/d/1RHsdRy9-_ni6Ut1Z-c02Ac7-4YO1cun7/view?usp=drive_link" },
-      { id: "1mbaghd04NZPsZzfTHIkxvRgMf2IeRpGa", title: "Music Video 6", driveLink: "https://drive.google.com/file/d/1mbaghd04NZPsZzfTHIkxvRgMf2IeRpGa/view?usp=drive_link" },
-    ],
-  },
-  {
-    name: "Podcast/long form",
-    folderLink: "https://drive.google.com/drive/folders/1s19BEqw_4sjSealtlsv-SUxtxFf2Cbfo?usp=drive_link",
-    videos: [
-      { id: "1Z1SdN7ohl88Az4YxifXOa9mcEmtu0au8", title: "Podcast/Long Form 1", driveLink: "https://drive.google.com/file/d/1Z1SdN7ohl88Az4YxifXOa9mcEmtu0au8/view?usp=drive_link" },
-      { id: "1inAXqwnLFXNmhQ6WUpdgJtoYz0VZZUDH", title: "Podcast/Long Form 2", driveLink: "https://drive.google.com/file/d/1inAXqwnLFXNmhQ6WUpdgJtoYz0VZZUDH/view?usp=drive_link" },
-      { id: "1_pn7HONVKK55n8IODsm64I55J2sVognx", title: "Podcast/Long Form 3", driveLink: "https://drive.google.com/file/d/1_pn7HONVKK55n8IODsm64I55J2sVognx/view?usp=drive_link" },
-      { id: "1096Ce1u_COaqtOWxOqwUCPuVBwL2E1i8", title: "Podcast/Long Form 4", driveLink: "https://drive.google.com/file/d/1096Ce1u_COaqtOWxOqwUCPuVBwL2E1i8/view?usp=drive_link" },
-      { id: "13Yu-oZR61IEUWIBWtR6ETalRhqhhcB2-", title: "Podcast/Long Form 5", driveLink: "https://drive.google.com/file/d/13Yu-oZR61IEUWIBWtR6ETalRhqhhcB2-/view?usp=drive_link" },
-    ],
-  },
-  {
-    name: "Real-Estate",
-    folderLink: "https://drive.google.com/drive/folders/1hjiC_yYetjDWx8Hsa4R9RAJcM1MglQPS?usp=sharing",
-    videos: [
-      { id: "1ca_9p71UUIJZ8zwXGK05Dzah_jjye9Ex", title: "Real Estate 1", driveLink: "https://drive.google.com/file/d/1ca_9p71UUIJZ8zwXGK05Dzah_jjye9Ex/view?usp=drive_link" },
-      { id: "1AjBzuASxgtA2QkYtepWv0YtvZB-CUAY6", title: "Real Estate 2", driveLink: "https://drive.google.com/file/d/1AjBzuASxgtA2QkYtepWv0YtvZB-CUAY6/view?usp=drive_link" },
-      { id: "1ffgzogzd54XO2vBReXkPKNzgRKQ06ccB", title: "Real Estate 3", driveLink: "https://drive.google.com/file/d/1ffgzogzd54XO2vBReXkPKNzgRKQ06ccB/view?usp=drive_link" },
-      { id: "1vbLGL62ZrfK82EbkG9vrSMrzT_VQbChh", title: "Real Estate 4", driveLink: "https://drive.google.com/file/d/1vbLGL62ZrfK82EbkG9vrSMrzT_VQbChh/view?usp=drive_link" },
-      { id: "1n9YC16fe5bEKLRSIUahWZbmSzBc-1Uae", title: "Real Estate 5", driveLink: "https://drive.google.com/file/d/1n9YC16fe5bEKLRSIUahWZbmSzBc-1Uae/view?usp=drive_link" },
-      { id: "1mzXTzaSGpNO0-7hLXSh1x4eOrzXINkNL", title: "Real Estate 6", driveLink: "https://drive.google.com/file/d/1mzXTzaSGpNO0-7hLXSh1x4eOrzXINkNL/view?usp=drive_link" },
-    ],
-  },
-  {
-    name: "Reels/TikTok",
-    folderLink: "https://drive.google.com/drive/folders/1E4vLV4vdAabAtWPUrwgg_LN8iMU7zFhU?usp=drive_link",
-    videos: [
-      { id: "1eyxc-j7SmF_P69DL0oqcFxeCCqjPfscJ", title: "Reel/TikTok 1", driveLink: "https://drive.google.com/file/d/1eyxc-j7SmF_P69DL0oqcFxeCCqjPfscJ/view?usp=sharing" },
-      { id: "1nlx5VSGk7mUeX7YeHmPdDeTTPtLESi7F", title: "Reel/TikTok 2", driveLink: "https://drive.google.com/file/d/1nlx5VSGk7mUeX7YeHmPdDeTTPtLESi7F/view?usp=drive_link" },
-      { id: "17Ep5Ui7fjVt7n8ESuyvIjgk78rRrOOXc", title: "Reel/TikTok 3", driveLink: "https://drive.google.com/file/d/17Ep5Ui7fjVt7n8ESuyvIjgk78rRrOOXc/view?usp=drive_link" },
-      { id: "18ytVl-cjtw6B4xRxOdAh9mRRJ1OMmctG", title: "Reel/TikTok 4", driveLink: "https://drive.google.com/file/d/18ytVl-cjtw6B4xRxOdAh9mRRJ1OMmctG/view?usp=drive_link" },
-      { id: "19Q2bFWr_UBi1H4B7ACf3rLbOdleo6Q14", title: "Reel/TikTok 5", driveLink: "https://drive.google.com/file/d/19Q2bFWr_UBi1H4B7ACf3rLbOdleo6Q14/view?usp=drive_link" },
-      { id: "14kW8MlCCe9JRR9yxPOhnreeZVTbzweUM", title: "Reel/TikTok 6", driveLink: "https://drive.google.com/file/d/14kW8MlCCe9JRR9yxPOhnreeZVTbzweUM/view?usp=drive_link" },
-    ],
-  },
-  {
-    name: "sports/highlights",
-    folderLink: "https://drive.google.com/drive/folders/1rf5TmFx6XvQIjBZ0UbfUgO1KdVAJ0v6j?usp=drive_link",
-    videos: [
-      { id: "1H2w3qtHauR1zN-nt4N_mqZcaC33nkBaq", title: "Sports/Highlights 1", driveLink: "https://drive.google.com/file/d/1H2w3qtHauR1zN-nt4N_mqZcaC33nkBaq/view?usp=drive_link" },
-      { id: "1F0CQT6RvmSfuhCXC-fIPtatTCQI_1pS5", title: "Sports/Highlights 2", driveLink: "https://drive.google.com/file/d/1F0CQT6RvmSfuhCXC-fIPtatTCQI_1pS5/view?usp=drive_link" },
-      { id: "136gM5511VQNTcgL_1_RYL2LuIipt-EN6", title: "Sports/Highlights 3", driveLink: "https://drive.google.com/file/d/136gM5511VQNTcgL_1_RYL2LuIipt-EN6/view?usp=drive_link" },
-      { id: "1J3m-u_NMVATKcdAu5FHhw5WbskyumEaS", title: "Sports/Highlights 4", driveLink: "https://drive.google.com/file/d/1J3m-u_NMVATKcdAu5FHhw5WbskyumEaS/view?usp=drive_link" },
-      { id: "14XnfXNfgYCbQeeU8ht-a_a0Rww5YkoXD", title: "Sports/Highlights 5", driveLink: "https://drive.google.com/file/d/14XnfXNfgYCbQeeU8ht-a_a0Rww5YkoXD/view?usp=drive_link" },
-      { id: "1Abi3ekD2RycaM7NbNOabQy_796Gxtb8m", title: "Sports/Highlights 6", driveLink: "https://drive.google.com/file/d/1Abi3ekD2RycaM7NbNOabQy_796Gxtb8m/view?usp=drive_link" },
-    ],
-  },
-  {
-    name: "Vlogs",
-    folderLink: "https://drive.google.com/drive/folders/1FRefWGc5HrBsG3O5OAxquyErEftm4soP?usp=drive_link",
-    videos: [
-      { id: "1ghokM8kLonfohH5gezdFBDnRSfLGft4T", title: "Vlog 1", driveLink: "https://drive.google.com/file/d/1ghokM8kLonfohH5gezdFBDnRSfLGft4T/view?usp=drive_link" },
-      { id: "1_mmVVN9k3hAVUh4nHozWLux7Z6FgeKbr", title: "Vlog 2", driveLink: "https://drive.google.com/file/d/1_mmVVN9k3hAVUh4nHozWLux7Z6FgeKbr/view?usp=drive_link" },
-      { id: "1-dWkdFfQo3sjhqnUan-6aJGmLYTL3v5t", title: "Vlog 3", driveLink: "https://drive.google.com/file/d/1-dWkdFfQo3sjhqnUan-6aJGmLYTL3v5t/view?usp=drive_link" },
-      { id: "1f_w0sbqlcxm7MURvei4J2m0A4mVbNqwq", title: "Vlog 4", driveLink: "https://drive.google.com/file/d/1f_w0sbqlcxm7MURvei4J2m0A4mVbNqwq/view?usp=drive_link" },
-      { id: "1A_Oh9kC8HiZBzBT9iHJ2pOV2JA2GYxm8", title: "Vlog 5", driveLink: "https://drive.google.com/file/d/1A_Oh9kC8HiZBzBT9iHJ2pOV2JA2GYxm8/view?usp=drive_link" },
     ],
   },
   {
