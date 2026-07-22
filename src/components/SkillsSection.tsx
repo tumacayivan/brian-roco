@@ -33,12 +33,12 @@ const skillCategories = [
     ],
   },
   {
-    title: "Web Design & Development",
+    title: "Web & E-commerce",
     skills: [
+      "Shopify",
       "WordPress",
+      "WooCommerce",
       "HTML/CSS",
-      "UI/UX Design",
-      "SEO Basics",
     ],
   },
   {
@@ -53,40 +53,19 @@ const skillCategories = [
   },
 ];
 
-const skills = [
+const preferencesSkills = [
   "Video Editing",
-  "Graphic Design",
-  "Web Design",
-  "Property Consultation",
-  "Computer Skills",
-  "Critical Thinking",
-  "Leadership",
-  "Communication Skills",
-  "Multitasking",
-  "Drawing / Digital Art",
-  "Social Media Management",
-  "Content Creation",
-  "Brand Identity Design",
+  "HTML/CSS",
   "Motion Graphics",
   "Color Grading",
-  "Storytelling",
-];
-
-const competencies = [
-  "Critical Thinking",
-  "Leadership",
-  "Communication Skills",
-  "Multitasking",
-  "Creativity",
-  "Attention to Detail",
-  "Problem-Solving",
-  "Adaptability",
-  "Client Relations",
-  "Time Management",
-  "Collaboration",
-  "Organization",
-  "Visual Storytelling",
-  "Brand Development",
+  "Graphic Design",
+  "Content Creation",
+  "Social Media Content",
+  "Social Media Ads",
+  "Clipping",
+  "AI Generation",
+  "Web Design",
+  "Ad Management",
 ];
 
 const SkillsSection = () => {
@@ -98,7 +77,7 @@ const SkillsSection = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="font-display font-black text-6xl md:text-7xl lg:text-8xl mb-4">Skills & Softwares</h2>
+        <h2 className="font-display font-black text-6xl md:text-7xl lg:text-8xl mb-4">Softwares</h2>
         <div className="w-24 h-2 bg-primary mb-12" />
       </motion.div>
 
@@ -130,42 +109,25 @@ const SkillsSection = () => {
         })}
       </div>
 
-      {/* Skills & Competencies */}
-      <div className="grid md:grid-cols-2 gap-6">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="glass-card p-6"
-        >
-          <h3 className="font-display font-bold text-2xl md:text-3xl text-primary mb-6">Skills</h3>
-          <div className="flex flex-wrap gap-3">
-            {skills.map((s) => (
-              <span key={s} className="px-4 py-2 text-sm md:text-base font-body font-bold bg-primary/10 text-primary border-2 border-primary/30 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
-                {s}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="glass-card p-6"
-        >
-          <h3 className="font-display font-bold text-2xl md:text-3xl text-primary mb-6">Key Competencies</h3>
-          <div className="flex flex-wrap gap-3">
-            {competencies.map((c) => (
-              <span key={c} className="px-4 py-2 text-sm md:text-base font-body font-bold bg-primary/10 text-primary border-2 border-primary/30 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
-                {c}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-      </div>
+      {/* Preferences | Skills */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="glass-card p-6"
+      >
+        <h3 className="font-display font-bold text-2xl md:text-3xl text-primary mb-6">
+          Preferences <span className="text-muted-foreground font-normal">|</span> Skills
+        </h3>
+        <div className="flex flex-wrap gap-3">
+          {preferencesSkills.map((s) => (
+            <span key={s} className="px-4 py-2 text-sm md:text-base font-body font-bold bg-primary/10 text-primary border-2 border-primary/30 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
+              {s}
+            </span>
+          ))}
+        </div>
+      </motion.div>
     </section>
   );
 };

@@ -92,7 +92,7 @@ const graphicsImages = [
 
 const GraphicsShowcase = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const googleDriveLink = "https://drive.google.com/drive/folders/1qUntbeDGNkOa7lOXwSQ6TntDrMEXy_m4";
+  const googleDriveLink = "https://drive.google.com/drive/folders/1m_Kr2MkQUtSOJswjIGXKebG7GrlsW8Ft";
 
   const nextImage = () => {
     if (selectedImage !== null) {
@@ -119,7 +119,7 @@ const GraphicsShowcase = () => {
           Featured Graphics
         </h3>
         <p className="text-foreground font-semibold text-lg md:text-xl text-center mb-8 font-body max-w-3xl mx-auto">
-          A selection of <span className="highlight-text">branding</span>, <span className="highlight-text">social media graphics</span>, <span className="highlight-text">marketing materials</span>, and <span className="highlight-text">visual storytelling</span> projects.
+          A selection of <span className="highlight-text">Adobe design work</span>, <span className="highlight-text">branding</span>, <span className="highlight-text">social media graphics</span>, <span className="highlight-text">marketing materials</span>, and <span className="highlight-text">visual storytelling</span> projects.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
           {graphicsImages.map((image, index) => (
@@ -158,7 +158,7 @@ const GraphicsShowcase = () => {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-body text-sm"
           >
-            View all graphics on Google Drive
+            View all Adobe works & graphics on Google Drive
             <ExternalLink className="w-4 h-4" />
           </a>
         </div>

@@ -115,7 +115,7 @@ const graphicsImages = [
 
 const GraphicsPortfolio = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  const googleDriveLink = "https://drive.google.com/drive/folders/1qUntbeDGNkOa7lOXwSQ6TntDrMEXy_m4";
+  const googleDriveLink = "https://drive.google.com/drive/folders/1m_Kr2MkQUtSOJswjIGXKebG7GrlsW8Ft";
 
   const nextImage = () => {
     if (selectedImage !== null) {

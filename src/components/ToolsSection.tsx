@@ -34,8 +34,7 @@ const tools = [
   { name: "Adobe Photoshop", image: toolImages[6] },
   { name: "Adobe Illustrator", image: toolImages[7] },
   { name: "Adobe InDesign", image: toolImages[8] },
-  { name: "Google Docs", image: toolImages[9] },
-  { name: "Google Sheets", image: toolImages[10] },
+  { name: "Google Workspace", image: toolImages[9] },
   { name: "HighLevel", image: toolImages[11] },
   { name: "Asana", image: toolImages[12] },
   { name: "Mailchimp", image: toolImages[13] },
@@ -76,9 +75,9 @@ const ToolsSection = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.3, delay: (index % 5) * 0.05 }}
-              className="group flex flex-col items-center justify-center gap-3 bg-white border border-border/60 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
+              className="group flex flex-col items-center justify-center gap-3 bg-card border border-border/60 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
             >
-              <div className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center">
+              <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-xl p-2.5 shadow-inner">
                 <img
                   src={`/tools/${tool.image}`}
                   alt={tool.name}

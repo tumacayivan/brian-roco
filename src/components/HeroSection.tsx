@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen overflow-hidden bg-white">
+    <section className="relative min-h-screen overflow-hidden bg-background">
       <div className="grid lg:grid-cols-2 min-h-screen">
         {/* Left column - full-height, full-width profile picture */}
         <motion.div
@@ -16,7 +16,7 @@ const HeroSection = () => {
             alt="Brian Rizo Roco"
             className="absolute inset-0 w-full h-full object-cover object-top"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-white/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-background/60" />
         </motion.div>
 
         {/* Right column - information */}
@@ -28,7 +28,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6 }}
               className="text-primary font-body font-bold text-sm md:text-base lg:text-lg tracking-[0.25em] uppercase mb-6"
             >
-              <span className="highlight-bg">Video Editor</span> / <span className="highlight-bg">Graphic Designer</span> / <span className="highlight-bg">Web Designer</span> / <span className="highlight-bg">Virtual Assistant</span>
+              <span className="highlight-bg">Video Editor</span> / <span className="highlight-bg">Graphic Designer</span> / <span className="highlight-bg">Social Media Ad Manager</span> / <span className="highlight-bg">General Virtual Assistant</span>
             </motion.p>
 
             <motion.h1
@@ -48,7 +48,7 @@ const HeroSection = () => {
               transition={{ duration: 0.6, delay: 0.35 }}
               className="text-foreground font-body font-semibold text-base md:text-lg lg:text-xl mb-10 leading-relaxed"
             >
-              <span className="font-bold">Graphic Designer &amp; Video Editor</span> with strong Adobe skills and a passion for <span className="highlight-text">visual storytelling</span>. I specialize in <span className="highlight-text">generative AI</span> for video creation, leveraging next-gen tools like Google Flow, ElevenLabs, and Runway to help businesses build high-converting content.
+              <span className="font-bold">Graphic Designer &amp; Video Editor</span> with strong expertise in <span className="highlight-text">Adobe Illustrator, Photoshop, Premiere Pro, and After Effects</span>. I specialize in creating impactful graphics and <span className="highlight-text">AI-powered video content</span>, using next-generation tools like Google Flow, ElevenLabs, and Runway to deliver engaging, high-converting visuals.
             </motion.p>
 
             <motion.div

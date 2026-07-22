@@ -29,13 +29,6 @@ const experiences = [
     description:
       "Managed real estate transactions and client acquisitions for the Philippines' leading developer. Excelled in lead generation, contract negotiation, and marketing strategies, providing tailored investment solutions while ensuring a seamless buying experience.",
   },
-  {
-    title: "Web Designer",
-    company: "Exoskill Creatives",
-    period: "2024–Present",
-    description:
-      "Created and developed websites that were both visually engaging and user-friendly, customized to meet each client's needs. Focused on blending creativity with functionality, ensuring every site offered a smooth user experience while staying true to the client's brand identity.",
-  },
 ];
 
 const ExperienceSection = () => {

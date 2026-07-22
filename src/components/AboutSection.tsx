@@ -22,12 +22,7 @@ const AboutSection = () => {
           className="space-y-6 text-foreground leading-relaxed"
         >
           <p className="font-semibold text-lg md:text-xl">
-            <span className="font-bold text-primary">Graphic Designer & Video Editor</span> with strong Adobe skills and a passion for <span className="highlight-text">visual storytelling</span>. I specialize in <span className="highlight-text">generative AI</span> for video creation and editing, leveraging next-gen tools like <span className="font-bold">Google Flow, ElevenLabs, and Runway</span> to help businesses streamline production and build high-converting video content.
-          </p>
-          <p className="font-semibold text-lg md:text-xl">
-            Proficient in <span className="highlight-text">industry-standard tools</span> such as the <span className="font-bold">Adobe Creative Suite</span>
-            (Premiere Pro, After Effects, Photoshop, Illustrator) alongside <span className="highlight-text">web design</span> and <span className="highlight-text">real estate</span> experience. Skilled in
-            <span className="highlight-text"> communication</span>, <span className="highlight-text">time management</span>, <span className="highlight-text">color grading</span>, and <span className="highlight-text">AI prompting</span>, with a focus on creating engaging visual content.
+            <span className="font-bold text-primary">Graphic Designer & Video Editor</span> with strong expertise in <span className="font-bold">Adobe Illustrator, Photoshop, Premiere Pro, and After Effects</span>. I specialize in creating <span className="highlight-text">impactful graphics</span> and <span className="highlight-text">AI-powered video content</span>, using next-generation tools like <span className="font-bold">Google Flow, ElevenLabs, and Runway</span> to streamline production and deliver <span className="highlight-text">engaging, high-converting visuals</span>.
           </p>
         </motion.div>
 
