@@ -4,11 +4,12 @@ import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const links = [
-  { label: "About", href: "#about" },
-  { label: "Experience", href: "#experience" },
-  { label: "Skills", href: "#skills" },
-  { label: "Portfolio", href: "#portfolio" },
-  { label: "Contact", href: "#contact" },
+  { label: "Portfolio", href: "/#portfolio" },
+  { label: "About", href: "/#about" },
+  { label: "Experience", href: "/#experience" },
+  { label: "Graphics", href: "/#graphics" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 const Navbar = () => {
@@ -17,44 +18,46 @@ const Navbar = () => {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 50);
+    onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const solid = scrolled || menuOpen;
 
   return (
     <motion.nav
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-background/90 backdrop-blur-md border-b border-border/50 shadow-sm" : "bg-background/60 backdrop-blur-sm"
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
+        solid
+          ? "bg-background/80 backdrop-blur-xl border-border py-3"
+          : "border-transparent py-[1.1rem]"
       }`}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="#" className="font-display font-black text-3xl md:text-4xl tracking-wider text-primary">
-          BR
+      <div className="flex items-center justify-between px-[clamp(1.25rem,5vw,5rem)]">
+        <a href="/#" className="font-display font-extrabold text-[1.3rem] tracking-[-0.02em] text-foreground">
+          Brian<span className="text-primary">.</span>Roco
         </a>
 
         {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
-          {links.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-foreground hover:text-primary text-base md:text-lg font-body font-semibold tracking-wider uppercase transition-colors"
-            >
-              {link.label}
-            </a>
-          ))}
-          <ThemeToggle />
-        </div>
-
-        {/* Mobile controls */}
-        <div className="flex items-center gap-2 md:hidden">
+        <div className="flex items-center gap-5">
+          <div className="hidden md:flex items-center gap-8">
+            {links.map((link) => (
+              <a
+                key={link.label}
+                href={link.href}
+                className="text-[0.92rem] font-medium text-muted-foreground hover:text-foreground transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
           <ThemeToggle />
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="text-foreground"
+            className="md:hidden text-foreground"
             aria-label="Toggle menu"
           >
             {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -67,14 +70,14 @@ const Navbar = () => {
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
-          className="md:hidden bg-background/95 backdrop-blur-md border-b border-border/50 px-6 pb-6 space-y-4"
+          className="md:hidden px-[clamp(1.25rem,5vw,5rem)] pt-4 pb-6 space-y-4"
         >
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="block text-muted-foreground hover:text-primary text-sm font-body tracking-wider uppercase transition-colors"
+              className="block font-display font-extrabold text-2xl tracking-[-0.02em] text-foreground hover:text-primary transition-colors"
             >
               {link.label}
             </a>

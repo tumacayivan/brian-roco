@@ -1,53 +1,58 @@
 import { motion } from "framer-motion";
 
+// `wide` cells span both columns so long values don't break mid-word
+const info = [
+  { label: "Email", value: "rocobrian06@gmail.com", wide: true },
+  { label: "Location", value: "Cavite, Philippines" },
+  { label: "Phone", value: "+63 964 170 5633" },
+  { label: "Languages", value: "English, Filipino/Tagalog, Native Minasbate", wide: true },
+];
+
+const reveal = {
+  initial: { opacity: 0, y: 38 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+  transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
+};
+
 const AboutSection = () => {
   return (
-    <section id="about" className="section-padding w-full">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="font-display font-black text-6xl md:text-7xl lg:text-8xl mb-4">About Me</h2>
-        <div className="w-16 h-1 bg-primary mb-10" />
-      </motion.div>
-
-      <div className="grid md:grid-cols-2 gap-12">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="space-y-6 text-foreground leading-relaxed"
-        >
-          <p className="font-semibold text-lg md:text-xl">
-            <span className="font-bold text-primary">Graphic Designer & Video Editor</span> with strong expertise in <span className="font-bold">Adobe Illustrator, Photoshop, Premiere Pro, and After Effects</span>. I specialize in creating <span className="highlight-text">impactful graphics</span> and <span className="highlight-text">AI-powered video content</span>, using next-generation tools like <span className="font-bold">Google Flow, ElevenLabs, and Runway</span> to streamline production and deliver <span className="highlight-text">engaging, high-converting visuals</span>.
-          </p>
+    <section id="about" className="section alt">
+      <div className="inner">
+        <motion.div {...reveal}>
+          <span className="eyebrow">About Me</span>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-2 gap-4 md:gap-6"
-        >
-          {[
-            { label: "Location", value: "Cavite, Philippines" },
-            { label: "Email", value: "rocobrian06@gmail.com" },
-            { label: "Phone", value: "+63 964 170 5633" },
-            // { label: "Website", value: "www.reallygreatsite.com" },
-            { label: "Languages", value: "English, Filipino/Tagalog, Native Minasbate" },
-          ].map((item) => (
-            <div key={item.label} className="glass-card p-5 md:p-6 break-words overflow-hidden">
-              <p className="text-primary text-sm md:text-base uppercase tracking-widest mb-3 font-body font-bold">
-                {item.label}
-              </p>
-              <p className="text-foreground text-base md:text-lg font-body font-semibold break-words leading-relaxed">{item.value}</p>
-            </div>
-          ))}
-        </motion.div>
+        <div className="mt-8 grid lg:grid-cols-[1.1fr_0.9fr] gap-[clamp(2.5rem,6vw,6rem)] items-center">
+          <motion.p
+            {...reveal}
+            className="font-display font-normal text-[clamp(1.5rem,2.8vw,2.5rem)] leading-[1.25] tracking-[-0.02em]"
+          >
+            <b className="font-extrabold text-primary">Graphic Designer &amp; Video Editor</b> with strong expertise in Adobe
+            Illustrator, Photoshop, Premiere Pro, and After Effects. I specialize in creating{" "}
+            <b className="font-extrabold text-primary">impactful graphics</b> and{" "}
+            <b className="font-extrabold text-primary">AI-powered video content</b>, using next-generation tools like Google Flow,
+            ElevenLabs, and Runway to streamline production and deliver engaging, high-converting visuals.
+          </motion.p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-border border border-border rounded-[18px] overflow-hidden">
+            {info.map((item, i) => (
+              <motion.div
+                key={item.label}
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: i * 0.08 }}
+                className={`bg-card p-[clamp(1.4rem,2.5vw,2.2rem)] ${item.wide ? "sm:col-span-2" : ""}`}
+              >
+                <p className="text-[0.78rem] uppercase tracking-[0.18em] text-primary font-semibold">{item.label}</p>
+                <p className="mt-3 text-[1.05rem] font-semibold leading-snug break-words">
+                  {item.value}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

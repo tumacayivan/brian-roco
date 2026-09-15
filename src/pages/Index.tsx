@@ -5,6 +5,7 @@ import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
 import ToolsSection from "@/components/ToolsSection";
 import PortfolioSection from "@/components/PortfolioSection";
+import GraphicsShowcase from "@/components/GraphicsShowcase";
 import EducationSection from "@/components/EducationSection";
 import ReferencesSection from "@/components/ReferencesSection";
 import ContactSection from "@/components/ContactSection";
@@ -14,15 +15,18 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <HeroSection />
-      <AboutSection />
-      <PortfolioSection />
-      <ExperienceSection />
-      <SkillsSection />
-      <ToolsSection />
-      <EducationSection />
-      <ReferencesSection />
-      <ContactSection />
+      <main>
+        <HeroSection />
+        <PortfolioSection />
+        <AboutSection />
+        <ExperienceSection />
+        <GraphicsShowcase />
+        <SkillsSection />
+        <ToolsSection />
+        <EducationSection />
+        <ReferencesSection />
+        <ContactSection />
+      </main>
       <Footer />
     </div>
   );

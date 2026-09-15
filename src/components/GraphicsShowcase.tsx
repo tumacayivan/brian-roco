@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, ZoomIn, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, ZoomIn, X, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -107,144 +107,143 @@ const GraphicsShowcase = () => {
   };
 
   return (
-    <>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-12"
-      >
-        <h3 className="font-display font-black text-4xl md:text-5xl lg:text-6xl mb-6 text-center">
-          Featured Graphics
-        </h3>
-        <p className="text-foreground font-semibold text-lg md:text-xl text-center mb-8 font-body max-w-3xl mx-auto">
-          A selection of <span className="highlight-text">Adobe design work</span>, <span className="highlight-text">branding</span>, <span className="highlight-text">social media graphics</span>, <span className="highlight-text">marketing materials</span>, and <span className="highlight-text">visual storytelling</span> projects.
-        </p>
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {graphicsImages.map((image, index) => (
-            <motion.div
-              key={image.id}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.05 }}
-              className="group relative overflow-hidden rounded-lg glass-card cursor-pointer aspect-[9/16]"
-              onClick={() => setSelectedImage(index)}
-            >
-              <div className="w-full h-full overflow-hidden bg-secondary/20">
-                <img
-                  src={getDriveImageUrl(image.id)}
-                  alt={image.alt}
-                  className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
-                  loading="lazy"
-                  onError={(e) => {
-                    // Fallback if direct image doesn't load
-                    const target = e.target as HTMLImageElement;
-                    target.src = `https://drive.google.com/thumbnail?id=${image.id}&sz=w1000`;
-                  }}
-                />
-              </div>
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                <ZoomIn className="w-6 h-6 text-white" />
-              </div>
-            </motion.div>
-          ))}
+    <section id="graphics" className="section alt">
+      <div className="inner">
+        <motion.div
+          initial={{ opacity: 0, y: 38 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="eyebrow">Design</span>
+          <h2 className="section-title">
+            Featured
+            <br />
+            Graphics
+          </h2>
+          <p className="section-lead">
+            A selection of Adobe design work, branding, social media graphics, marketing materials, and visual storytelling projects.
+          </p>
+        </motion.div>
+
+        <div className="pt-[clamp(3rem,6vw,5rem)]">
+          <h3 className="mb-6 flex items-baseline gap-4 font-display font-extrabold text-[clamp(1.7rem,4vw,3rem)] tracking-[-0.02em]">
+            Adobe Works
+            <span className="font-body font-medium text-[0.95rem] tracking-[0.1em] text-muted-foreground">
+              {graphicsImages.length} pieces
+            </span>
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-[clamp(0.8rem,1.4vw,1.3rem)]">
+            {graphicsImages.map((image, index) => (
+              <motion.div
+                key={image.id}
+                initial={{ opacity: 0, y: 38 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: (index % 4) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              >
+                <div
+                  className="group relative aspect-[3/4] rounded-[14px] overflow-hidden bg-card border border-border cursor-pointer transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)]"
+                  onClick={() => setSelectedImage(index)}
+                >
+                  <img
+                    src={getDriveImageUrl(image.id)}
+                    alt={image.alt}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.06]"
+                    loading="lazy"
+                    onError={(e) => {
+                      // Fallback if direct image doesn't load
+                      const target = e.target as HTMLImageElement;
+                      target.src = `https://drive.google.com/thumbnail?id=${image.id}&sz=w1000`;
+                    }}
+                  />
+                  <div className="absolute inset-0 grid place-items-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <span className="grid place-items-center w-14 h-14 rounded-full bg-primary text-primary-foreground">
+                      <ZoomIn className="w-6 h-6" />
+                    </span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
-        <div className="text-center mt-6">
-          <a
-            href={googleDriveLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-body text-sm"
-          >
-            View all Adobe works & graphics on Google Drive
-            <ExternalLink className="w-4 h-4" />
+
+        <div className="mt-12 flex justify-center">
+          <a href={googleDriveLink} target="_blank" rel="noopener noreferrer" className="btn btn-ghost">
+            View all Adobe works &amp; graphics on Google Drive
+            <ArrowUpRight />
           </a>
         </div>
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {selectedImage !== null && (
           <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
-            <DialogContent className="max-w-6xl w-full p-0 bg-transparent border-none">
+            <DialogContent className="max-w-5xl w-full p-0 bg-transparent border-none shadow-none [&>button]:hidden">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                exit={{ opacity: 0, scale: 0.94 }}
                 className="relative"
               >
                 <button
                   onClick={() => setSelectedImage(null)}
-                  className="absolute -top-12 right-0 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-2"
+                  className="absolute -top-14 right-0 z-10 grid place-items-center w-11 h-11 rounded-full border border-foreground/20 bg-card text-foreground hover:bg-primary hover:text-primary-foreground hover:rotate-90 transition-all duration-300"
+                  aria-label="Close image"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5" />
                 </button>
-                
-                {graphicsImages.length > 1 && (
-                  <>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        prevImage();
-                      }}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-3 hover:bg-black/70"
-                      aria-label="Previous image"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        nextImage();
-                      }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-3 hover:bg-black/70"
-                      aria-label="Next image"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                  </>
-                )}
 
-                <div className="relative">
-                  <img
-                    src={getDriveImageUrl(graphicsImages[selectedImage].id)}
-                    alt={graphicsImages[selectedImage].alt}
-                    className="w-full h-auto rounded-lg max-h-[85vh] object-contain mx-auto"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.src = `https://drive.google.com/thumbnail?id=${graphicsImages[selectedImage].id}&sz=w2000`;
+                <img
+                  src={getDriveImageUrl(graphicsImages[selectedImage].id)}
+                  alt={graphicsImages[selectedImage].alt}
+                  className="w-auto max-w-full h-auto rounded-2xl max-h-[78vh] object-contain mx-auto shadow-[0_40px_120px_rgba(0,0,0,0.7)]"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = `https://drive.google.com/thumbnail?id=${graphicsImages[selectedImage].id}&sz=w2000`;
+                  }}
+                />
+
+                <div className="mt-4 flex items-center justify-between gap-3 text-white">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prevImage();
                     }}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 rounded-b-lg">
-                    <div className="flex items-center justify-between">
-                      <p className="text-white font-body text-base">
-                        {graphicsImages[selectedImage].alt}
-                      </p>
-                      <a
-                        href={graphicsImages[selectedImage].driveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-white hover:text-primary transition-colors text-sm"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Open in Google Drive
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div>
-                    {graphicsImages.length > 1 && (
-                      <p className="text-white/70 text-xs mt-2 font-body">
-                        {selectedImage + 1} of {graphicsImages.length}
-                      </p>
-                    )}
+                    className="grid place-items-center w-11 h-11 rounded-full border border-white/25 hover:bg-primary hover:border-primary transition-colors"
+                    aria-label="Previous image"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div className="text-center">
+                    <p className="text-sm font-semibold">{graphicsImages[selectedImage].alt}</p>
+                    <a
+                      href={graphicsImages[selectedImage].driveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-white/70 hover:text-white transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {selectedImage + 1} of {graphicsImages.length} · Open in Google Drive ↗
+                    </a>
                   </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      nextImage();
+                    }}
+                    className="grid place-items-center w-11 h-11 rounded-full border border-white/25 hover:bg-primary hover:border-primary transition-colors"
+                    aria-label="Next image"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
               </motion.div>
             </DialogContent>
           </Dialog>
         )}
       </AnimatePresence>
-    </>
+    </section>
   );
 };
 

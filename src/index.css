@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -98,6 +98,124 @@
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold;
   }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    @apply bg-primary text-primary-foreground;
+  }
+}
+
+/* Editorial layout system: big display type, generous spacing, hairline dividers */
+@layer components {
+  .section {
+    @apply relative w-full;
+    padding-block: clamp(5rem, 11vw, 11rem);
+  }
+
+  .inner {
+    @apply mx-auto w-full;
+    max-width: 1500px;
+    padding-inline: clamp(1.25rem, 5vw, 5rem);
+  }
+
+  .alt {
+    background: hsl(var(--secondary) / 0.6);
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-3 font-body font-semibold uppercase text-primary;
+    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
+    letter-spacing: 0.42em;
+  }
+
+  .eyebrow::before {
+    content: "";
+    @apply h-px w-[34px] bg-primary;
+  }
+
+  .section-title {
+    @apply mt-5 font-display font-extrabold;
+    font-size: clamp(2.6rem, 7vw, 6rem);
+    line-height: 0.96;
+    letter-spacing: -0.03em;
+  }
+
+  .section-lead {
+    @apply mt-6 max-w-[60ch] text-muted-foreground;
+    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  }
+
+  .btn {
+    @apply inline-flex cursor-pointer items-center gap-2.5 rounded-full border border-transparent px-6 py-3.5 text-[0.98rem] font-semibold transition-all duration-300 hover:-translate-y-[3px];
+  }
+
+  .btn svg {
+    @apply h-[18px] w-[18px];
+  }
+
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground;
+  }
+
+  .btn-ghost {
+    @apply border-foreground/20 text-foreground hover:border-primary hover:text-primary;
+  }
+
+  .chip {
+    @apply rounded-full border border-foreground/20 px-4 py-2 text-[0.9rem] text-muted-foreground;
+  }
+
+  .chip-tool {
+    @apply bg-card text-foreground;
+  }
+
+  .hairline-list {
+    @apply border-t border-border;
+  }
+
+  .hairline-row {
+    @apply relative border-b border-border transition-colors duration-500 hover:bg-card;
+    padding-block: clamp(1.6rem, 3vw, 2.6rem);
+  }
+}
+
+@keyframes pulse-dot {
+  0% { box-shadow: 0 0 0 0 rgba(54, 211, 153, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(54, 211, 153, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(54, 211, 153, 0); }
+}
+
+@keyframes scroll-line {
+  from { left: -40%; }
+  to { left: 100%; }
+}
+
+.pulse-dot {
+  animation: pulse-dot 2.4s ease infinite;
+}
+
+.scroll-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: hsl(var(--primary));
+  animation: scroll-line 2.2s cubic-bezier(.16, 1, .3, 1) infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .pulse-dot, .scroll-line::after { animation: none; }
 }
 
 @layer utilities {

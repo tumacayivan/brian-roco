@@ -48,44 +48,44 @@ const tools = [
 
 const ToolsSection = () => {
   return (
-    <section id="tools" className="section-padding bg-secondary/30">
-      <div className="w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
+    <section id="tools" className="section alt">
+      <div className="inner">
+        <div className="flex flex-wrap items-end justify-between gap-8">
+          <motion.div
+            initial={{ opacity: 0, y: 38 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12"
-        >
-          <h2 className="font-display font-black text-6xl md:text-7xl lg:text-8xl mb-4">
-            <span className="text-primary">Tools</span>
-          </h2>
-          <div className="w-24 h-2 bg-primary mb-8" />
-          <p className="text-foreground font-semibold text-lg md:text-xl lg:text-2xl max-w-3xl font-body">
-            <span className="font-bold">Professional software and platforms</span> I use to deliver <span className="highlight-text">high-quality creative work</span> and manage <span className="highlight-text">projects efficiently</span>.
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <span className="eyebrow">Toolkit</span>
+            <h2 className="section-title">Tools</h2>
+          </motion.div>
+          <p className="section-lead">
+            <span className="text-foreground font-semibold">Professional software and platforms</span> I use to deliver
+            high-quality creative work and manage projects efficiently.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Uniform responsive grid of tool tiles */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-6">
+        {/* Hairline grid of tool tiles */}
+        <div className="mt-[clamp(3rem,6vw,5rem)] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-px bg-border border border-border rounded-[18px] overflow-hidden">
           {tools.map((tool, index) => (
             <motion.div
               key={tool.name}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.3, delay: (index % 5) * 0.05 }}
-              className="group flex flex-col items-center justify-center gap-3 bg-card border border-border/60 rounded-2xl p-5 md:p-6 shadow-sm hover:shadow-md hover:border-primary/40 hover:-translate-y-1 transition-all duration-300"
+              transition={{ duration: 0.6, delay: (index % 5) * 0.05 }}
+              className="group flex flex-col items-center justify-center gap-4 bg-card p-6 md:p-8 transition-colors duration-500 hover:bg-background"
             >
-              <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-xl p-2.5 shadow-inner">
+              <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl p-2.5">
                 <img
                   src={`/tools/${tool.image}`}
                   alt={tool.name}
-                  className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
+                  className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
                   loading="lazy"
                 />
               </div>
-              <p className="text-sm md:text-base font-semibold text-foreground text-center font-body leading-tight">
+              <p className="text-sm md:text-[0.95rem] font-medium text-muted-foreground group-hover:text-foreground text-center leading-tight transition-colors">
                 {tool.name}
               </p>
             </motion.div>

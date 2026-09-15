@@ -33,40 +33,42 @@ const experiences = [
 
 const ExperienceSection = () => {
   return (
-    <section id="experience" className="section-padding bg-secondary/30">
-      <div className="w-full">
+    <section id="experience" className="section">
+      <div className="inner">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 38 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h2 className="font-display font-black text-6xl md:text-7xl lg:text-8xl mb-4">Work Experience</h2>
-          <div className="w-24 h-2 bg-primary mb-12" />
+          <span className="eyebrow">Career</span>
+          <h2 className="section-title">
+            Work
+            <br />
+            Experience
+          </h2>
         </motion.div>
 
-        <div className="space-y-0">
+        <div className="hairline-list mt-[clamp(2.5rem,5vw,4rem)]">
           {experiences.map((exp, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 38 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="grid md:grid-cols-[200px_1fr] gap-4 md:gap-8 py-8 border-b border-border/50 last:border-b-0"
+              transition={{ duration: 0.8, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              className="hairline-row grid md:grid-cols-[0.6fr_1.4fr_1fr] gap-3 md:gap-8"
             >
-              <p className="text-primary font-body font-bold text-base md:text-lg tracking-wider">
-                {exp.period}
-              </p>
+              <p className="text-primary font-semibold text-[0.95rem] tracking-[0.04em]">{exp.period}</p>
               <div>
-                <h3 className="font-display font-black text-3xl md:text-4xl mb-2">{exp.title}</h3>
-                <p className="text-primary font-semibold text-lg md:text-xl mb-4 font-body">
-                  {exp.company}
-                </p>
-                <p className="text-foreground font-semibold text-base md:text-lg leading-relaxed font-body">
-                  {exp.description}
-                </p>
+                <h3 className="font-display font-extrabold text-[clamp(1.4rem,2.6vw,2.1rem)] tracking-[-0.02em] leading-[1.05]">
+                  {exp.title}
+                </h3>
+                <p className="mt-2 text-muted-foreground">{exp.company}</p>
               </div>
+              <p className="relative pl-[1.1rem] text-muted-foreground text-[0.97rem] leading-relaxed before:absolute before:left-0 before:top-[0.6em] before:w-1.5 before:h-1.5 before:rounded-full before:bg-primary">
+                {exp.description}
+              </p>
             </motion.div>
           ))}
         </div>

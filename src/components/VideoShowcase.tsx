@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Play, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowUpRight, Play, X, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -81,156 +81,161 @@ const VideoShowcase = () => {
 
   return (
     <>
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="mb-12"
-      >
-        <h3 className="font-display font-black text-4xl md:text-5xl lg:text-6xl mb-6 text-center">
-          Featured Videos
-        </h3>
-        <p className="text-foreground font-semibold text-lg md:text-xl text-center mb-12 font-body max-w-3xl mx-auto">
-          A selection of <span className="highlight-text">AI-generated videos</span> and other <span className="highlight-text">creative video content</span> with autoplay previews.
+      <div className="mt-[clamp(4rem,8vw,7rem)] flex flex-wrap items-end justify-between gap-8">
+        <motion.h3
+          initial={{ opacity: 0, y: 38 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          className="font-display font-extrabold text-[clamp(2.2rem,5.5vw,4.6rem)] leading-[0.96] tracking-[-0.03em]"
+        >
+          Featured
+          <br />
+          Videos
+        </motion.h3>
+        <p className="section-lead">
+          A selection of <span className="text-foreground font-semibold">AI-generated videos</span> and other{" "}
+          <span className="text-foreground font-semibold">creative video content</span> with autoplay previews.
         </p>
+      </div>
 
-        {videoCategories.map((category, catIdx) => {
-          const offset = videoCategories
-            .slice(0, catIdx)
-            .reduce((n, c) => n + c.videos.length, 0);
-          return (
-            <div key={category.name} className={catIdx > 0 ? "mt-14" : ""}>
-              <div className="flex items-center justify-between mb-6 gap-4 flex-wrap">
-                <h4 className="font-display font-bold text-2xl md:text-3xl lg:text-4xl text-primary">
+      {videoCategories.map((category, catIdx) => {
+        const offset = videoCategories
+          .slice(0, catIdx)
+          .reduce((n, c) => n + c.videos.length, 0);
+        return (
+          <div key={category.name} className="pt-[clamp(3rem,6vw,5rem)]">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="flex flex-wrap items-baseline justify-between gap-6 mb-[clamp(1.8rem,3vw,2.8rem)]"
+            >
+              <div className="flex flex-wrap items-baseline gap-5">
+                <span className="font-display font-semibold text-primary text-lg">{String(catIdx + 1).padStart(2, "0")}</span>
+                <h4 className="font-display font-extrabold text-[clamp(2rem,5vw,3.8rem)] tracking-[-0.03em] leading-none">
                   {category.name}
                 </h4>
+              </div>
+              <div className="flex items-center gap-6">
+                <span className="text-[0.85rem] uppercase tracking-[0.15em] text-muted-foreground whitespace-nowrap">
+                  {category.videos.length} Projects
+                </span>
                 <a
                   href={category.folderLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors font-body text-sm"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-primary transition-colors"
                 >
                   View folder
-                  <ExternalLink className="w-4 h-4" />
+                  <ArrowUpRight className="w-4 h-4" />
                 </a>
               </div>
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
-                {category.videos.map((video, i) => {
-                  const index = offset + i;
-                  return (
-                    <motion.div
-                      key={video.id}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.4, delay: (i % 4) * 0.05 }}
-                      className="group relative overflow-hidden rounded-lg glass-card cursor-pointer aspect-[9/16]"
+            </motion.div>
+            <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-[clamp(0.7rem,1.6vw,1.5rem)]">
+              {category.videos.map((video, i) => {
+                const index = offset + i;
+                return (
+                  <motion.div
+                    key={video.id}
+                    initial={{ opacity: 0, y: 38 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: (i % 4) * 0.06, ease: [0.16, 1, 0.3, 1] }}
+                  >
+                    <div
+                      className="group relative aspect-[9/16] rounded-2xl overflow-hidden bg-card border border-border cursor-pointer transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_30px_80px_-30px_rgba(0,0,0,0.6)] hover:border-foreground/20"
                       onClick={() => setSelectedVideo(index)}
                     >
-                      <div className="w-full h-full relative bg-secondary/20">
-                        <iframe
-                          src={getDriveVideoUrl(video.id, true)}
-                          title={video.title}
-                          className="w-full h-full"
-                          allow="autoplay; encrypted-media; fullscreen"
-                          allowFullScreen
-                          loading="lazy"
-                          style={{ pointerEvents: 'none' }}
-                        />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                          <div className="flex items-center gap-2 text-white">
-                            <Play className="w-8 h-8" />
-                            <span className="font-body text-sm font-semibold">Click to view fullscreen</span>
-                          </div>
-                        </div>
+                      <iframe
+                        src={getDriveVideoUrl(video.id, true)}
+                        title={video.title}
+                        className="w-full h-full transition-transform duration-700 group-hover:scale-[1.07]"
+                        allow="autoplay; encrypted-media; fullscreen"
+                        allowFullScreen
+                        loading="lazy"
+                        style={{ pointerEvents: "none" }}
+                      />
+                      <span className="absolute top-3 left-3 rounded-md bg-background/55 backdrop-blur-sm px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.1em] text-foreground">
+                        {category.name}
+                      </span>
+                      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-75 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 grid place-items-center w-16 h-16 rounded-full bg-primary text-primary-foreground shadow-[0_10px_30px_rgba(0,0,0,0.4)]">
+                        <Play className="w-6 h-6 ml-0.5 fill-current" />
                       </div>
-                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3 opacity-0 group-hover:opacity-100 transition-opacity">
-                        <p className="text-white font-body text-xs">{video.title}</p>
+                      <div className="absolute inset-0 flex flex-col justify-end p-4 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span className="text-white text-sm font-semibold">{video.title}</span>
                       </div>
-                    </motion.div>
-                  );
-                })}
-              </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
-          );
-        })}
-      </motion.div>
+          </div>
+        );
+      })}
 
       <AnimatePresence>
         {selectedVideo !== null && (
           <Dialog open={selectedVideo !== null} onOpenChange={() => setSelectedVideo(null)}>
-            <DialogContent className="max-w-6xl w-full p-0 bg-transparent border-none">
+            <DialogContent className="max-w-[min(92vw,460px)] w-full p-0 bg-transparent border-none shadow-none [&>button]:hidden">
               <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
+                initial={{ opacity: 0, scale: 0.94 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                exit={{ opacity: 0, scale: 0.94 }}
                 className="relative"
               >
                 <button
                   onClick={() => setSelectedVideo(null)}
-                  className="absolute -top-12 right-0 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-2"
+                  className="absolute -top-14 right-0 z-10 grid place-items-center w-11 h-11 rounded-full border border-foreground/20 bg-card text-foreground hover:bg-primary hover:text-primary-foreground hover:rotate-90 transition-all duration-300"
+                  aria-label="Close video"
                 >
-                  <X className="w-6 h-6" />
+                  <X className="w-5 h-5" />
                 </button>
 
-                {videoFiles.length > 1 && (
-                  <>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        prevVideo();
-                      }}
-                      className="absolute left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-3 hover:bg-black/70"
-                      aria-label="Previous video"
-                    >
-                      <ChevronLeft className="w-6 h-6" />
-                    </button>
-                    <button
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        nextVideo();
-                      }}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-3 hover:bg-black/70"
-                      aria-label="Next video"
-                    >
-                      <ChevronRight className="w-6 h-6" />
-                    </button>
-                  </>
-                )}
+                <div className="aspect-[9/16] max-h-[78vh] mx-auto w-full bg-black rounded-2xl overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.7)]">
+                  <iframe
+                    src={getDriveVideoUrl(videoFiles[selectedVideo].id, true)}
+                    title={videoFiles[selectedVideo].title}
+                    className="w-full h-full"
+                    allow="autoplay; encrypted-media; fullscreen"
+                    allowFullScreen
+                  />
+                </div>
 
-                <div className="relative">
-                  <div className="aspect-video w-full bg-black rounded-lg overflow-hidden">
-                    <iframe
-                      src={getDriveVideoUrl(videoFiles[selectedVideo].id, true)}
-                      title={videoFiles[selectedVideo].title}
-                      className="w-full h-full"
-                      allow="autoplay; encrypted-media; fullscreen"
-                      allowFullScreen
-                    />
+                <div className="mt-4 flex items-center justify-between gap-3 text-white">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      prevVideo();
+                    }}
+                    className="grid place-items-center w-11 h-11 rounded-full border border-white/25 hover:bg-primary hover:border-primary transition-colors"
+                    aria-label="Previous video"
+                  >
+                    <ChevronLeft className="w-5 h-5" />
+                  </button>
+                  <div className="text-center">
+                    <p className="text-sm font-semibold">{videoFiles[selectedVideo].title}</p>
+                    <a
+                      href={videoFiles[selectedVideo].driveLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs text-white/70 hover:text-white transition-colors"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      {selectedVideo + 1} of {videoFiles.length} · Open in Google Drive ↗
+                    </a>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-6 rounded-b-lg">
-                    <div className="flex items-center justify-between">
-                      <p className="text-white font-body text-base">
-                        {videoFiles[selectedVideo].title}
-                      </p>
-                      <a
-                        href={videoFiles[selectedVideo].driveLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 text-white hover:text-primary transition-colors text-sm"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        Open in Google Drive
-                        <ExternalLink className="w-4 h-4" />
-                      </a>
-                    </div>
-                    {videoFiles.length > 1 && (
-                      <p className="text-white/70 text-xs mt-2 font-body">
-                        {selectedVideo + 1} of {videoFiles.length}
-                      </p>
-                    )}
-                  </div>
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      nextVideo();
+                    }}
+                    className="grid place-items-center w-11 h-11 rounded-full border border-white/25 hover:bg-primary hover:border-primary transition-colors"
+                    aria-label="Next video"
+                  >
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
               </motion.div>
             </DialogContent>

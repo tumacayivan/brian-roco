@@ -70,64 +70,66 @@ const preferencesSkills = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="section-padding w-full">
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <h2 className="font-display font-black text-6xl md:text-7xl lg:text-8xl mb-4">Softwares</h2>
-        <div className="w-24 h-2 bg-primary mb-12" />
-      </motion.div>
+    <section id="skills" className="section">
+      <div className="inner">
+        <motion.div
+          initial={{ opacity: 0, y: 38 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <span className="eyebrow">Expertise</span>
+          <h2 className="section-title">Softwares</h2>
+        </motion.div>
 
-      {/* Software categories */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-        {skillCategories.map((category, i) => {
-          return (
+        {/* Software categories */}
+        <div className="hairline-list mt-[clamp(2.5rem,5vw,4rem)]">
+          {skillCategories.map((category, i) => (
             <motion.div
               key={category.title}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 38 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card p-6"
+              transition={{ duration: 0.8, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
+              className="hairline-row grid md:grid-cols-[0.6fr_1.4fr] gap-4 md:gap-8 items-baseline"
             >
-              <h3 className="font-display font-bold text-2xl md:text-3xl mb-5 text-primary">
-                {category.title}
-              </h3>
-              <ul className="space-y-3">
+              <div className="flex items-baseline gap-4">
+                <span className="font-display font-semibold text-primary">{String(i + 1).padStart(2, "0")}</span>
+                <h3 className="font-display font-extrabold text-[clamp(1.3rem,2.2vw,1.8rem)] tracking-[-0.02em] leading-[1.05]">
+                  {category.title}
+                </h3>
+              </div>
+              <div className="flex flex-wrap gap-2.5">
                 {category.skills.map((skill) => (
-                  <li key={skill} className="text-foreground font-semibold text-base md:text-lg font-body flex items-center gap-3">
-                    <span className="w-2 h-2 rounded-full flex-shrink-0 bg-primary" />
+                  <span key={skill} className="chip chip-tool">
                     {skill}
-                  </li>
+                  </span>
                 ))}
-              </ul>
+              </div>
             </motion.div>
-          );
-        })}
-      </div>
-
-      {/* Preferences | Skills */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="glass-card p-6"
-      >
-        <h3 className="font-display font-bold text-2xl md:text-3xl text-primary mb-6">
-          Preferences <span className="text-muted-foreground font-normal">|</span> Skills
-        </h3>
-        <div className="flex flex-wrap gap-3">
-          {preferencesSkills.map((s) => (
-            <span key={s} className="px-4 py-2 text-sm md:text-base font-body font-bold bg-primary/10 text-primary border-2 border-primary/30 rounded-full hover:bg-primary hover:text-primary-foreground transition-colors">
-              {s}
-            </span>
           ))}
         </div>
-      </motion.div>
+
+        {/* Preferences | Skills */}
+        <motion.div
+          initial={{ opacity: 0, y: 38 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-[clamp(3rem,6vw,5rem)]"
+        >
+          <h3 className="flex items-baseline gap-4 font-display font-extrabold text-[clamp(1.7rem,4vw,3rem)] tracking-[-0.02em]">
+            Preferences <span className="text-muted-foreground font-normal">|</span> Skills
+          </h3>
+          <div className="mt-6 flex flex-wrap gap-2.5">
+            {preferencesSkills.map((s) => (
+              <span key={s} className="chip hover:border-primary hover:text-primary transition-colors">
+                {s}
+              </span>
+            ))}
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 };
