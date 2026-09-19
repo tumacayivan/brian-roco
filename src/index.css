@@ -1,88 +1,110 @@
-@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/*
+  Brian Roco - video editor & illustrator.
+  Design language: Adobe Premiere Pro editor chrome. Dark neutral panels, hairline
+  panel seams, mono metadata, and the Premiere periwinkle (#9999FF) as the single accent.
+  Purple is a deliberate brand call here, not a default: the brief asked for a Premiere look.
+  One radius scale (square, like NLE panels). Every section runs full-bleed.
+*/
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 220 15% 8%;
+    /* Light mode mirrors Adobe's light UI theme rather than a paper-white site. */
+    --background: 240 14% 96%;
+    --foreground: 240 12% 10%;
 
-    --card: 0 0% 98%;
-    --card-foreground: 220 15% 8%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 12% 10%;
 
-    --popover: 0 0% 98%;
-    --popover-foreground: 220 15% 8%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 12% 10%;
 
-    --primary: 218 80% 24%;
+    /* single accent: Premiere periwinkle, darkened for contrast on light panels */
+    --primary: 245 68% 50%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 220 10% 96%;
-    --secondary-foreground: 220 15% 8%;
+    --secondary: 240 12% 92%;
+    --secondary-foreground: 240 12% 10%;
 
-    --muted: 220 10% 96%;
-    --muted-foreground: 220 10% 45%;
+    --muted: 240 12% 92%;
+    --muted-foreground: 240 6% 38%;
 
-    --accent: 215 70% 42%;
+    --accent: 245 72% 40%;
     --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 72% 46%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 10% 85%;
-    --input: 220 10% 85%;
-    --ring: 218 80% 24%;
+    --border: 240 10% 84%;
+    --input: 240 10% 84%;
+    --ring: 245 68% 50%;
 
-    --radius: 0.5rem;
+    --radius: 0px;
+    --gutter: clamp(1.25rem, 3.5vw, 3.5rem);
 
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 220 15% 8%;
-    --sidebar-primary: 218 80% 24%;
+    /* NLE chrome */
+    --panel: 0 0% 100%;
+    --panel-raised: 240 12% 92%;
+    --seam: 240 10% 84%;
+
+    --sidebar-background: 240 14% 96%;
+    --sidebar-foreground: 240 12% 10%;
+    --sidebar-primary: 245 68% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 220 10% 96%;
-    --sidebar-accent-foreground: 220 15% 8%;
-    --sidebar-border: 220 10% 85%;
-    --sidebar-ring: 218 80% 24%;
+    --sidebar-accent: 240 12% 92%;
+    --sidebar-accent-foreground: 240 12% 10%;
+    --sidebar-border: 240 10% 84%;
+    --sidebar-ring: 245 68% 50%;
   }
 
   .dark {
-    --background: 222 20% 7%;
-    --foreground: 210 20% 96%;
+    /* Premiere's panel stack: #15161A app frame, #1F2026 panels, #2A2B33 raised. */
+    --background: 231 9% 9%;
+    --foreground: 240 20% 94%;
 
-    --card: 222 18% 11%;
-    --card-foreground: 210 20% 96%;
+    --card: 232 9% 13%;
+    --card-foreground: 240 20% 94%;
 
-    --popover: 222 18% 11%;
-    --popover-foreground: 210 20% 96%;
+    --popover: 232 9% 13%;
+    --popover-foreground: 240 20% 94%;
 
-    --primary: 213 94% 62%;
-    --primary-foreground: 222 40% 8%;
+    /* #9999FF */
+    --primary: 240 100% 80%;
+    --primary-foreground: 245 90% 12%;
 
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 210 20% 96%;
+    --secondary: 232 9% 17%;
+    --secondary-foreground: 240 20% 94%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 215 15% 65%;
+    --muted: 232 9% 17%;
+    --muted-foreground: 235 9% 62%;
 
-    --accent: 195 90% 55%;
-    --accent-foreground: 222 40% 8%;
+    --accent: 243 100% 86%;
+    --accent-foreground: 245 90% 12%;
 
-    --destructive: 0 72% 55%;
+    --destructive: 0 70% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 220 14% 22%;
-    --input: 220 14% 22%;
-    --ring: 213 94% 62%;
+    --border: 232 8% 22%;
+    --input: 232 8% 22%;
+    --ring: 240 100% 80%;
 
-    --sidebar-background: 222 20% 7%;
-    --sidebar-foreground: 210 20% 96%;
-    --sidebar-primary: 213 94% 62%;
-    --sidebar-primary-foreground: 222 40% 8%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 210 20% 96%;
-    --sidebar-border: 220 14% 22%;
-    --sidebar-ring: 213 94% 62%;
+    --panel: 232 9% 13%;
+    --panel-raised: 232 9% 17%;
+    --seam: 232 8% 22%;
+
+    --sidebar-background: 231 9% 9%;
+    --sidebar-foreground: 240 20% 94%;
+    --sidebar-primary: 240 100% 80%;
+    --sidebar-primary-foreground: 245 90% 12%;
+    --sidebar-accent: 232 9% 17%;
+    --sidebar-accent-foreground: 240 20% 94%;
+    --sidebar-border: 232 8% 22%;
+    --sidebar-ring: 240 100% 80%;
   }
 }
 
@@ -93,149 +115,141 @@
 
   body {
     @apply bg-background text-foreground font-body antialiased;
+    line-height: 1.6;
+    overflow-x: hidden;
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-display font-bold;
   }
-}
 
-@layer base {
   html {
     scroll-behavior: smooth;
-  }
-
-  body {
-    line-height: 1.6;
-    overflow-x: hidden;
   }
 
   ::selection {
     @apply bg-primary text-primary-foreground;
   }
+
+  :focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: 2px;
+  }
 }
 
-/* Editorial layout system: big display type, generous spacing, hairline dividers */
 @layer components {
+  /* Full-bleed section: edge to edge, only a reading gutter. */
   .section {
     @apply relative w-full;
-    padding-block: clamp(5rem, 11vw, 11rem);
+    padding-block: clamp(4rem, 8vw, 8rem);
   }
 
   .inner {
-    @apply mx-auto w-full;
-    max-width: 1500px;
-    padding-inline: clamp(1.25rem, 5vw, 5rem);
+    @apply w-full;
+    max-width: none;
+    padding-inline: var(--gutter);
   }
 
   .alt {
-    background: hsl(var(--secondary) / 0.6);
+    background: hsl(var(--panel));
+  }
+
+  /* Panel seam: the 1px rule between Premiere panels. */
+  .seam-t {
+    border-top: 1px solid hsl(var(--seam));
   }
 
   .eyebrow {
-    @apply inline-flex items-center gap-3 font-body font-semibold uppercase text-primary;
-    font-size: clamp(0.75rem, 0.9vw, 0.85rem);
-    letter-spacing: 0.42em;
-  }
-
-  .eyebrow::before {
-    content: "";
-    @apply h-px w-[34px] bg-primary;
+    @apply inline-flex items-center gap-3 font-mono font-medium uppercase text-primary;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
   }
 
   .section-title {
-    @apply mt-5 font-display font-extrabold;
-    font-size: clamp(2.6rem, 7vw, 6rem);
-    line-height: 0.96;
-    letter-spacing: -0.03em;
+    @apply font-display font-extrabold;
+    letter-spacing: -0.035em;
+    line-height: 0.88;
+    font-size: clamp(2.8rem, 9vw, 8.5rem);
   }
 
   .section-lead {
-    @apply mt-6 max-w-[60ch] text-muted-foreground;
-    font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+    @apply text-muted-foreground;
+    font-size: clamp(1rem, 1.25vw, 1.2rem);
+    max-width: 58ch;
+  }
+
+  /* Panel tab: the small label strip at the top of every Premiere panel. */
+  .panel-tab {
+    @apply inline-flex items-center gap-2.5 border border-b-0 border-border bg-card px-4 py-2 font-mono text-[0.7rem] uppercase tracking-[0.2em] text-muted-foreground;
   }
 
   .btn {
-    @apply inline-flex cursor-pointer items-center gap-2.5 rounded-full border border-transparent px-6 py-3.5 text-[0.98rem] font-semibold transition-all duration-300 hover:-translate-y-[3px];
+    @apply inline-flex cursor-pointer items-center justify-center gap-2.5 whitespace-nowrap border px-7 py-4 text-[0.95rem] font-semibold transition-all duration-300;
   }
 
   .btn svg {
-    @apply h-[18px] w-[18px];
+    @apply h-[18px] w-[18px] shrink-0;
   }
 
   .btn-primary {
-    @apply bg-primary text-primary-foreground hover:bg-accent hover:text-accent-foreground;
+    @apply border-primary bg-primary text-primary-foreground hover:bg-accent hover:border-accent hover:text-accent-foreground active:translate-y-px;
   }
 
   .btn-ghost {
-    @apply border-foreground/20 text-foreground hover:border-primary hover:text-primary;
+    @apply border-foreground/25 text-foreground hover:border-primary hover:text-primary active:translate-y-px;
   }
 
   .chip {
-    @apply rounded-full border border-foreground/20 px-4 py-2 text-[0.9rem] text-muted-foreground;
+    @apply inline-flex items-center border border-border px-3.5 py-2 text-[0.88rem] text-muted-foreground transition-colors;
   }
 
-  .chip-tool {
+  .chip-solid {
     @apply bg-card text-foreground;
   }
 
-  .hairline-list {
-    @apply border-t border-border;
-  }
-
-  .hairline-row {
-    @apply relative border-b border-border transition-colors duration-500 hover:bg-card;
-    padding-block: clamp(1.6rem, 3vw, 2.6rem);
+  /* Mono metadata voice, used for timecodes and counts. */
+  .meta {
+    @apply font-mono uppercase text-muted-foreground;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
   }
 }
 
-@keyframes pulse-dot {
-  0% { box-shadow: 0 0 0 0 rgba(54, 211, 153, 0.6); }
-  70% { box-shadow: 0 0 0 12px rgba(54, 211, 153, 0); }
-  100% { box-shadow: 0 0 0 0 rgba(54, 211, 153, 0); }
+@layer utilities {
+  /* Faint timeline ruler ticks, used once on the hero frame. */
+  .ruler {
+    background-image: repeating-linear-gradient(
+      to right,
+      hsl(var(--seam)) 0 1px,
+      transparent 1px 12px
+    );
+  }
+
+  .marquee-track {
+    animation: marquee 52s linear infinite;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
-@keyframes scroll-line {
-  from { left: -40%; }
-  to { left: 100%; }
-}
-
-.pulse-dot {
-  animation: pulse-dot 2.4s ease infinite;
-}
-
-.scroll-line::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  width: 40%;
-  background: hsl(var(--primary));
-  animation: scroll-line 2.2s cubic-bezier(.16, 1, .3, 1) infinite;
+@keyframes marquee {
+  from { transform: translate3d(0, 0, 0); }
+  to { transform: translate3d(-50%, 0, 0); }
 }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
-  .pulse-dot, .scroll-line::after { animation: none; }
-}
-
-@layer utilities {
-  .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
-  }
-
-  .section-padding {
-    @apply py-20 md:py-28 px-6 md:px-12 lg:px-20;
-  }
-
-  .glass-card {
-    @apply bg-card/80 backdrop-blur-md border border-border/50 rounded-lg shadow-sm;
-  }
-
-  .highlight-text {
-    @apply font-bold text-primary;
-  }
-
-  .highlight-bg {
-    @apply bg-primary/10 px-2 py-1 rounded;
+  .marquee-track { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

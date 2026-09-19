@@ -1,7 +1,4 @@
-import { motion } from "framer-motion";
-
-// Tool images from public/tools folder (in order)
-const toolImages = [
+const shots = [
   "Screenshot 2026-02-28 152603.png",
   "Screenshot 2026-02-28 152607.png",
   "Screenshot 2026-02-28 152609.png",
@@ -25,72 +22,72 @@ const toolImages = [
 ];
 
 const tools = [
-  { name: "Adobe Premiere Pro", image: toolImages[0] },
-  { name: "Adobe After Effects", image: toolImages[1] },
-  { name: "Adobe Audition", image: toolImages[2] },
-  { name: "CapCut", image: toolImages[3] },
-  { name: "Filmora", image: toolImages[4] },
-  { name: "Audacity", image: toolImages[5] },
-  { name: "Adobe Photoshop", image: toolImages[6] },
-  { name: "Adobe Illustrator", image: toolImages[7] },
-  { name: "Adobe InDesign", image: toolImages[8] },
-  { name: "Google Workspace", image: toolImages[9] },
-  { name: "HighLevel", image: toolImages[11] },
-  { name: "Asana", image: toolImages[12] },
-  { name: "Mailchimp", image: toolImages[13] },
-  { name: "Slack", image: toolImages[14] },
-  { name: "VistaSocial", image: toolImages[15] },
-  { name: "Canva", image: toolImages[16] },
-  { name: "ClickUp", image: toolImages[17] },
-  { name: "Monday.com", image: toolImages[18] },
-  { name: "Discord", image: toolImages[19] },
+  { name: "Adobe Premiere Pro", image: shots[0] },
+  { name: "Adobe After Effects", image: shots[1] },
+  { name: "Adobe Audition", image: shots[2] },
+  { name: "CapCut", image: shots[3] },
+  { name: "Filmora", image: shots[4] },
+  { name: "Audacity", image: shots[5] },
+  { name: "Adobe Photoshop", image: shots[6] },
+  { name: "Adobe Illustrator", image: shots[7] },
+  { name: "Adobe InDesign", image: shots[8] },
+  { name: "Google Workspace", image: shots[9] },
+  { name: "HighLevel", image: shots[11] },
+  { name: "Asana", image: shots[12] },
+  { name: "Mailchimp", image: shots[13] },
+  { name: "Slack", image: shots[14] },
+  { name: "VistaSocial", image: shots[15] },
+  { name: "Canva", image: shots[16] },
+  { name: "ClickUp", image: shots[17] },
+  { name: "Monday.com", image: shots[18] },
+  { name: "Discord", image: shots[19] },
 ];
 
+/*
+  The only marquee on the page. Nineteen logos would either wrap into a wall of
+  tiles or need a "view all" disclosure; a single continuous strip shows the
+  breadth without asking anyone to read each one.
+*/
 const ToolsSection = () => {
-  return (
-    <section id="tools" className="section alt">
-      <div className="inner">
-        <div className="flex flex-wrap items-end justify-between gap-8">
-          <motion.div
-            initial={{ opacity: 0, y: 38 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <span className="eyebrow">Toolkit</span>
-            <h2 className="section-title">Tools</h2>
-          </motion.div>
-          <p className="section-lead">
-            <span className="text-foreground font-semibold">Professional software and platforms</span> I use to deliver
-            high-quality creative work and manage projects efficiently.
-          </p>
-        </div>
+  const strip = [...tools, ...tools];
 
-        {/* Hairline grid of tool tiles */}
-        <div className="mt-[clamp(3rem,6vw,5rem)] grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-px bg-border border border-border rounded-[18px] overflow-hidden">
-          {tools.map((tool, index) => (
-            <motion.div
-              key={tool.name}
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: (index % 5) * 0.05 }}
-              className="group flex flex-col items-center justify-center gap-4 bg-card p-6 md:p-8 transition-colors duration-500 hover:bg-background"
-            >
-              <div className="w-16 h-16 md:w-20 md:h-20 flex items-center justify-center bg-white rounded-2xl p-2.5">
+  return (
+    <section id="tools" className="section alt overflow-hidden">
+      <div className="inner">
+        <h3 className="font-display text-[clamp(1.4rem,2.6vw,2.2rem)] font-extrabold tracking-[-0.03em]">
+          Software I work in
+        </h3>
+      </div>
+
+      <div className="relative mt-[clamp(2rem,4vw,3rem)] border-y border-border py-8">
+        <div className="marquee-track flex w-max items-center gap-10 pr-10 md:gap-14 md:pr-14">
+          {strip.map((tool, i) => (
+            <div key={`${tool.name}-${i}`} className="flex shrink-0 items-center gap-3.5">
+              <span className="grid h-12 w-12 shrink-0 place-items-center bg-white p-2">
                 <img
                   src={`/tools/${tool.image}`}
-                  alt={tool.name}
-                  className="max-w-full max-h-full object-contain transition-transform duration-500 group-hover:scale-110"
+                  alt=""
+                  aria-hidden="true"
                   loading="lazy"
+                  className="max-h-full max-w-full object-contain"
                 />
-              </div>
-              <p className="text-sm md:text-[0.95rem] font-medium text-muted-foreground group-hover:text-foreground text-center leading-tight transition-colors">
+              </span>
+              <span className="whitespace-nowrap font-mono text-[0.75rem] uppercase tracking-[0.14em] text-muted-foreground">
                 {tool.name}
-              </p>
-            </motion.div>
+              </span>
+            </div>
           ))}
         </div>
+
+        {/* Soft edges so the strip reads as continuous rather than cut off */}
+        <div
+          className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-[hsl(var(--panel))] to-transparent md:w-32"
+          aria-hidden="true"
+        />
+        <div
+          className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-[hsl(var(--panel))] to-transparent md:w-32"
+          aria-hidden="true"
+        />
       </div>
     </section>
   );

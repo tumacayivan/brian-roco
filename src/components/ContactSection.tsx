@@ -1,67 +1,61 @@
-import { motion } from "framer-motion";
-import { ArrowRight, ArrowUpRight } from "lucide-react";
-
-const contactInfo = [
-  { label: "Email", value: "rocobrian06@gmail.com", href: "mailto:rocobrian06@gmail.com" },
-  { label: "Phone", value: "+63 964 170 5633", href: "tel:+639641705633" },
-  { label: "Location", value: "Cavite, Philippines" },
-];
-
-const reveal = {
-  initial: { opacity: 0, y: 38 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
-};
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
 
 const ContactSection = () => {
+  const reduce = useReducedMotion();
+
   return (
-    <section id="contact" className="section alt text-center">
+    <section id="contact" className="section alt">
       <div className="inner">
-        <motion.div {...reveal}>
-          <span className="eyebrow">Let's Work Together</span>
-          <h2 className="mt-6 font-display font-extrabold text-[clamp(2.8rem,11vw,9rem)] leading-[0.9] tracking-[-0.04em]">
-            <a href="mailto:rocobrian06@gmail.com" className="hover:text-primary transition-colors">
-              Get in
-              <br />
-              Touch.
-            </a>
-          </h2>
-          <p className="section-lead mx-auto">
-            <span className="text-foreground font-semibold">Interested in working together?</span> Feel free to reach out — I'm
-            always open to new projects and creative collaborations.
-          </p>
-        </motion.div>
-
-        <motion.div {...reveal} className="mt-12 flex flex-wrap justify-center gap-4">
-          <a href="mailto:rocobrian06@gmail.com" className="btn btn-primary">
-            Send an Email <ArrowRight />
-          </a>
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 26 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        >
           <a
-            href="https://drive.google.com/drive/folders/1xXgQ1eK4WCOx4VclNvhADPYerI8_F6YS"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-ghost"
+            href="mailto:rocobrian06@gmail.com"
+            className="group block font-display text-[clamp(2.6rem,12vw,11rem)] font-extrabold leading-[0.86] tracking-[-0.045em]"
           >
-            View Portfolio on Google Drive <ArrowUpRight />
+            Let&rsquo;s cut
+            <br />
+            <span className="text-primary transition-colors group-hover:text-accent">
+              something.
+            </span>
           </a>
         </motion.div>
 
-        <motion.div {...reveal} className="mt-14 flex flex-wrap justify-center gap-x-12 gap-y-8">
-          {contactInfo.map((item) => (
-            <div key={item.label}>
-              <span className="block mb-1.5 text-[0.78rem] uppercase tracking-[0.18em] text-primary font-semibold">
-                {item.label}
-              </span>
-              {item.href ? (
-                <a href={item.href} className="text-[1.05rem] text-foreground hover:text-primary transition-colors">
-                  {item.value}
-                </a>
-              ) : (
-                <p className="text-[1.05rem] text-foreground">{item.value}</p>
-              )}
-            </div>
-          ))}
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-[clamp(2.5rem,5vw,4rem)] grid gap-x-12 gap-y-10 border-t border-border pt-10 md:grid-cols-[1fr_auto] md:items-end"
+        >
+          <dl className="grid gap-x-12 gap-y-7 sm:grid-cols-3">
+            {[
+              { k: "Email", v: "rocobrian06@gmail.com", href: "mailto:rocobrian06@gmail.com" },
+              { k: "Phone", v: "+63 964 170 5633", href: "tel:+639641705633" },
+              { k: "Based in", v: "Cavite, Philippines" },
+            ].map((row) => (
+              <div key={row.k}>
+                <dt className="meta text-primary">{row.k}</dt>
+                <dd className="mt-2 text-[1.02rem] font-medium">
+                  {row.href ? (
+                    <a href={row.href} className="transition-colors hover:text-primary">
+                      {row.v}
+                    </a>
+                  ) : (
+                    row.v
+                  )}
+                </dd>
+              </div>
+            ))}
+          </dl>
+
+          <a href="mailto:rocobrian06@gmail.com" className="btn btn-primary w-full md:w-auto">
+            Email me <ArrowRight />
+          </a>
         </motion.div>
       </div>
     </section>

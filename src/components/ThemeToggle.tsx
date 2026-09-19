@@ -23,17 +23,17 @@ const ThemeToggle = ({ className = "" }: { className?: string }) => {
     }
   }, [theme]);
 
-  const toggle = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
   const isDark = theme === "dark";
 
   return (
     <button
-      onClick={toggle}
+      type="button"
+      onClick={() => setTheme(isDark ? "light" : "dark")}
       aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
       title={isDark ? "Switch to light mode" : "Switch to dark mode"}
-      className={`grid place-items-center w-[46px] h-[46px] rounded-full border border-foreground/20 bg-card text-foreground hover:border-primary hover:rotate-[20deg] hover:scale-105 transition-all duration-300 ${className}`}
+      className={`grid h-11 w-11 place-items-center text-muted-foreground transition-colors hover:text-primary ${className}`}
     >
-      {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+      {isDark ? <Sun className="h-[18px] w-[18px]" /> : <Moon className="h-[18px] w-[18px]" />}
     </button>
   );
 };

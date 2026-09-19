@@ -1,90 +1,88 @@
-import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 
 const links = [
-  { label: "Portfolio", href: "/#portfolio" },
+  { label: "Work", href: "/#portfolio" },
+  { label: "Illustration", href: "/#graphics" },
   { label: "About", href: "/#about" },
-  { label: "Experience", href: "/#experience" },
-  { label: "Graphics", href: "/#graphics" },
-  { label: "Skills", href: "/#skills" },
+  { label: "Career", href: "/#experience" },
+  { label: "Toolkit", href: "/#skills" },
   { label: "Contact", href: "/#contact" },
 ];
 
+/*
+  Reads as a Premiere Pro menu bar: a thin fixed app strip with a project chip
+  on the left and mono workspace labels on the right.
+*/
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  // Lock body scroll while the mobile sheet is open.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    onScroll();
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  const solid = scrolled || menuOpen;
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
   return (
-    <motion.nav
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-500 ${
-        solid
-          ? "bg-background/80 backdrop-blur-xl border-border py-3"
-          : "border-transparent py-[1.1rem]"
-      }`}
-    >
-      <div className="flex items-center justify-between px-[clamp(1.25rem,5vw,5rem)]">
-        <a href="/#" className="font-display font-extrabold text-[1.3rem] tracking-[-0.02em] text-foreground">
-          Brian<span className="text-primary">.</span>Roco
+    <nav className="fixed inset-x-0 top-0 z-50 border-b border-border bg-background/85 backdrop-blur-xl">
+      <div className="flex h-14 items-center justify-between gap-6 pl-[var(--gutter)] pr-2 sm:pr-3">
+        <a href="/#top" className="flex min-w-0 items-center gap-3">
+          <span className="grid h-7 w-7 shrink-0 place-items-center bg-primary font-display text-[0.8rem] font-extrabold leading-none text-primary-foreground">
+            Br
+          </span>
+          <span className="truncate font-mono text-[0.72rem] uppercase tracking-[0.2em] text-muted-foreground">
+            Brian Roco
+            <span className="mx-2 text-border">/</span>
+            <span className="text-foreground">Editor</span>
+          </span>
         </a>
 
-        {/* Desktop */}
-        <div className="flex items-center gap-5">
-          <div className="hidden md:flex items-center gap-8">
+        <div className="flex items-center">
+          <div className="hidden items-center lg:flex">
             {links.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className="text-[0.92rem] font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className="border-l border-border px-4 py-[1.15rem] font-mono text-[0.72rem] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:bg-card hover:text-primary"
               >
                 {link.label}
               </a>
             ))}
           </div>
-          <ThemeToggle />
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden text-foreground"
-            aria-label="Toggle menu"
-          >
-            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+
+          <div className="ml-1 flex items-center gap-1 border-l border-border pl-1">
+            <ThemeToggle />
+            <button
+              type="button"
+              onClick={() => setMenuOpen((v) => !v)}
+              className="grid h-11 w-11 place-items-center text-foreground transition-colors hover:text-primary lg:hidden"
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+            >
+              {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+            </button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <motion.div
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="md:hidden px-[clamp(1.25rem,5vw,5rem)] pt-4 pb-6 space-y-4"
-        >
+        <div className="border-t border-border bg-background lg:hidden">
           {links.map((link) => (
             <a
               key={link.label}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="block font-display font-extrabold text-2xl tracking-[-0.02em] text-foreground hover:text-primary transition-colors"
+              className="flex items-baseline gap-4 border-b border-border px-[var(--gutter)] py-4 font-display text-2xl font-extrabold tracking-[-0.02em] text-foreground transition-colors hover:text-primary"
             >
               {link.label}
             </a>
           ))}
-        </motion.div>
+        </div>
       )}
-    </motion.nav>
+    </nav>
   );
 };
 

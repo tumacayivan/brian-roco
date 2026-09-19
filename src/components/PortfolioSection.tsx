@@ -1,111 +1,129 @@
-import { motion } from "framer-motion";
-import { ArrowUpRight, ArrowRight } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import VideoShowcase from "./VideoShowcase";
+import DriveImage from "@/components/DriveImage";
 
-const categories = [
+type Capability = {
+  title: string;
+  body: string;
+  /** Drive id used as the tile background, when the tile carries a visual. */
+  image?: string;
+  to?: string;
+  /** Desktop column span inside the 4-column grid. */
+  span: string;
+};
+
+const capabilities: Capability[] = [
   {
-    title: "Video Edits",
-    description: "Professional video editing services including reels, podcasts, montages, music videos, vlogs, TikTok content, and sports highlights. Expertise in storytelling, pacing, and visual narrative."
+    title: "Video editing",
+    body: "Reels, podcasts, montages, music videos and sports highlights. Story first, then pacing, then polish.",
+    image: "1btrXzlgmRtqjd4hHysknCiLxOwFiI1JX",
+    span: "lg:col-span-2",
   },
   {
-    title: "AI-Generated Videos",
-    description: "Cutting-edge AI-powered video content and creative experiments. Exploring innovative techniques in automated video generation and AI-assisted editing workflows."
+    title: "Motion & colour",
+    body: "After Effects titles, lower thirds and grading that holds up across every platform crop.",
+    span: "lg:col-span-1",
   },
   {
-    title: "Graphic Design",
-    description: "Comprehensive graphic design services including branding, social media graphics, marketing materials, and visual storytelling. Specialized in Adobe Illustrator and Photoshop."
+    title: "AI generated film",
+    body: "Google Flow, Sora and Runway shots, voiced with ElevenLabs and finished in Premiere.",
+    span: "lg:col-span-1",
   },
   {
-    title: "Real Estate Videos",
-    description: "Property showcase videos and real estate marketing content. Creating engaging visual presentations that highlight property features and attract potential buyers."
+    title: "Real estate video",
+    body: "Property walkthroughs and listing films built to hold attention past the first five seconds.",
+    span: "lg:col-span-1",
   },
   {
-    title: "Web Design",
-    description: "User-friendly, visually engaging websites customized to client brand identity. Expertise in WordPress, Wix, and custom HTML/CSS development with focus on UI/UX design."
+    title: "Illustration & print",
+    body: "Apparel graphics, signage, postcards and packaging drawn in Illustrator and Photoshop.",
+    image: "14E1CHWwKNuqwcE3Y5Os9DdJ3EDv_YA3Z",
+    to: "/graphics",
+    span: "lg:col-span-2",
   },
   {
-    title: "Social Media Content",
-    description: "Complete social media management and content creation. Producing visually captivating graphics and videos optimized for various social media platforms."
+    title: "Social & web",
+    body: "Ad creative, content calendars, plus Shopify and WordPress builds that match the brand.",
+    span: "lg:col-span-1",
   },
 ];
 
-const reveal = {
-  initial: { opacity: 0, y: 38 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true },
-  transition: { duration: 0.9, ease: [0.16, 1, 0.3, 1] as const },
-};
-
 const PortfolioSection = () => {
+  const reduce = useReducedMotion();
+
   return (
-    <section id="portfolio" className="section">
+    <section id="services" className="section">
       <div className="inner">
-        <div className="flex flex-wrap items-end justify-between gap-8">
-          <motion.div {...reveal}>
-            <span className="eyebrow">Selected Work</span>
-            <h2 className="section-title">Portfolio</h2>
-          </motion.div>
-          <motion.p {...reveal} className="section-lead">
-            Explore my complete body of work — from property consultation and real estate videos to graphic design,
-            video editing, and web development projects. Each project showcases my{" "}
-            <span className="text-foreground font-semibold">commitment to quality, creativity, and client satisfaction</span> across
-            diverse industries and creative disciplines.
-          </motion.p>
-        </div>
+        <h2 className="section-title">
+          What I
+          <br />
+          <span className="text-primary">Do</span>
+        </h2>
+      </div>
 
-        {/* Services — hairline grid */}
-        <div className="mt-[clamp(3rem,6vw,5rem)] grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border border border-border rounded-[18px] overflow-hidden">
-          {categories.map((cat, i) => {
-            const isGraphicDesign = cat.title === "Graphic Design";
-            const body = (
-              <>
-                <div className="flex items-baseline justify-between gap-4">
-                  <span className="font-display font-semibold text-primary text-lg">{String(i + 1).padStart(2, "0")}</span>
-                  {isGraphicDesign && (
-                    <ArrowRight className="w-5 h-5 text-primary transition-transform group-hover:translate-x-1" />
-                  )}
+      {/* 6 items, 6 cells, 4-column rhythm: 2+1+1 then 1+2+1 */}
+      <div className="mt-[clamp(2.5rem,5vw,4rem)] grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4">
+        {capabilities.map((cap, i) => {
+          const inner = (
+            <>
+              {cap.image && (
+                <>
+                  <DriveImage
+                    id={cap.image}
+                    alt=""
+                    width={1200}
+                    fallbackLabel=""
+                    className="absolute inset-0 h-full w-full object-cover transition-transform [transition-duration:900ms] [transition-timing-function:cubic-bezier(.16,1,.3,1)] group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/65 to-black/35" />
+                </>
+              )}
+              <div className="relative flex h-full flex-col">
+                <div className="flex items-start justify-between gap-4">
+                  <h3
+                    className={`font-display text-[clamp(1.35rem,2vw,1.85rem)] font-extrabold leading-[1.05] tracking-[-0.025em] ${
+                      cap.image ? "text-white" : "text-foreground"
+                    }`}
+                  >
+                    {cap.title}
+                  </h3>
+                  {cap.to && <ArrowUpRight className="h-5 w-5 shrink-0 text-white transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />}
                 </div>
-                <h3 className="mt-4 font-display font-extrabold text-[clamp(1.4rem,2.2vw,1.9rem)] tracking-[-0.02em] leading-[1.05] group-hover:text-primary transition-colors">
-                  {cat.title}
-                </h3>
-                <p className="mt-3 text-muted-foreground text-[0.97rem] leading-relaxed">{cat.description}</p>
-              </>
-            );
-            const cls = "group block h-full bg-background p-[clamp(1.6rem,3vw,2.4rem)] transition-colors duration-500 hover:bg-card";
+                <p
+                  className={`mt-4 max-w-[46ch] text-[0.97rem] leading-relaxed ${
+                    cap.image ? "text-white/80" : "text-muted-foreground"
+                  }`}
+                >
+                  {cap.body}
+                </p>
+              </div>
+            </>
+          );
 
-            return (
-              <motion.div
-                key={cat.title}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: (i % 3) * 0.08 }}
-                className="bg-background"
-              >
-                {isGraphicDesign ? (
-                  <Link to="/graphics" className={cls}>{body}</Link>
-                ) : (
-                  <div className={cls}>{body}</div>
-                )}
-              </motion.div>
-            );
-          })}
-        </div>
+          const shell = `group relative block h-full min-h-[clamp(14rem,20vw,19rem)] overflow-hidden p-[clamp(1.5rem,2.4vw,2.4rem)] transition-colors duration-500 ${
+            cap.image ? "bg-black" : "bg-background hover:bg-card"
+          }`;
 
-        <VideoShowcase />
-
-        <motion.div {...reveal} className="mt-[clamp(3.5rem,7vw,6rem)] flex justify-center">
-          <a
-            href="https://drive.google.com/drive/folders/1xXgQ1eK4WCOx4VclNvhADPYerI8_F6YS"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary"
-          >
-            View Full Portfolio on Google Drive
-            <ArrowUpRight />
-          </a>
-        </motion.div>
+          return (
+            <motion.div
+              key={cap.title}
+              initial={reduce ? false : { opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.65, delay: (i % 3) * 0.07, ease: [0.16, 1, 0.3, 1] }}
+              className={`bg-background ${cap.span}`}
+            >
+              {cap.to ? (
+                <Link to={cap.to} className={shell}>
+                  {inner}
+                </Link>
+              ) : (
+                <div className={shell}>{inner}</div>
+              )}
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );

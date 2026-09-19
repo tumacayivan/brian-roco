@@ -1,134 +1,116 @@
-import { motion } from "framer-motion";
+import { useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 
-const skillCategories = [
+const bins = [
   {
-    title: "Graphic Design Software",
-    skills: [
-      "Adobe Illustrator",
-      "Adobe Photoshop",
-      "Adobe Lightroom",
-      "Canva",
-      "Figma",
-    ],
+    name: "Video editing",
+    items: ["Adobe Premiere Pro", "Adobe After Effects", "CapCut Pro", "Final Cut Pro", "Adobe Audition"],
   },
   {
-    title: "Video Editing Software",
-    skills: [
-      "Adobe Premiere Pro",
-      "Adobe After Effects",
-      "CapCut Pro",
-      "Final Cut Pro",
-    ],
+    name: "Design & illustration",
+    items: ["Adobe Illustrator", "Adobe Photoshop", "Adobe Lightroom", "Adobe InDesign", "Figma", "Canva"],
   },
   {
-    title: "AI Generation Tools",
-    skills: [
-      "Google Flow",
-      "OpenAI Sora 2 / Sora 2 Pro",
-      "Runway Gen-4.5",
-      "ElevenLabs",
-      "HeyGen",
-      "Higgsfield",
-      "MagicShot",
-    ],
+    name: "AI generation",
+    items: ["Google Flow", "Sora 2 Pro", "Runway Gen-4.5", "ElevenLabs", "HeyGen", "Higgsfield", "MagicShot"],
   },
   {
-    title: "Web & E-commerce",
-    skills: [
-      "Shopify",
-      "WordPress",
-      "WooCommerce",
-      "HTML/CSS",
-    ],
-  },
-  {
-    title: "Property & Real Estate",
-    skills: [
-      "Property Consultation",
-      "Client Relations",
-      "Property Presentation",
-      "Market Analysis",
-      "Sales & Negotiation",
-    ],
+    name: "Web & commerce",
+    items: ["Shopify", "WordPress", "WooCommerce", "HTML/CSS"],
   },
 ];
 
-const preferencesSkills = [
-  "Video Editing",
-  "HTML/CSS",
-  "Motion Graphics",
-  "Color Grading",
-  "Graphic Design",
-  "Content Creation",
-  "Social Media Content",
-  "Social Media Ads",
+const craft = [
+  "Storytelling",
+  "Pacing",
+  "Colour grading",
+  "Motion graphics",
+  "Sound design",
   "Clipping",
-  "AI Generation",
-  "Web Design",
-  "Ad Management",
+  "Social ad creative",
+  "Brand identity",
+  "Ad management",
 ];
 
 const SkillsSection = () => {
+  const [openBin, setOpenBin] = useState<string | null>(bins[0].name);
+  const reduce = useReducedMotion();
+
   return (
     <section id="skills" className="section">
       <div className="inner">
-        <motion.div
-          initial={{ opacity: 0, y: 38 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <span className="eyebrow">Expertise</span>
-          <h2 className="section-title">Softwares</h2>
-        </motion.div>
+        <h2 className="section-title">
+          The
+          <br />
+          <span className="text-primary">Toolkit</span>
+        </h2>
+      </div>
 
-        {/* Software categories */}
-        <div className="hairline-list mt-[clamp(2.5rem,5vw,4rem)]">
-          {skillCategories.map((category, i) => (
+      {/* Project-bin style disclosure list, two columns of folders */}
+      <div className="mt-[clamp(2.5rem,5vw,4rem)] grid grid-cols-1 gap-px border-y border-border bg-border lg:grid-cols-2">
+        {bins.map((bin, i) => {
+          const isOpen = openBin === bin.name;
+          return (
             <motion.div
-              key={category.title}
-              initial={{ opacity: 0, y: 38 }}
+              key={bin.name}
+              initial={reduce ? false : { opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: i * 0.06, ease: [0.16, 1, 0.3, 1] }}
-              className="hairline-row grid md:grid-cols-[0.6fr_1.4fr] gap-4 md:gap-8 items-baseline"
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.6, delay: (i % 2) * 0.08, ease: [0.16, 1, 0.3, 1] }}
+              className="bg-background"
             >
-              <div className="flex items-baseline gap-4">
-                <span className="font-display font-semibold text-primary">{String(i + 1).padStart(2, "0")}</span>
-                <h3 className="font-display font-extrabold text-[clamp(1.3rem,2.2vw,1.8rem)] tracking-[-0.02em] leading-[1.05]">
-                  {category.title}
-                </h3>
-              </div>
-              <div className="flex flex-wrap gap-2.5">
-                {category.skills.map((skill) => (
-                  <span key={skill} className="chip chip-tool">
-                    {skill}
-                  </span>
-                ))}
-              </div>
+              <button
+                type="button"
+                onClick={() => setOpenBin(isOpen ? null : bin.name)}
+                aria-expanded={isOpen}
+                className="flex w-full items-center gap-4 px-[var(--gutter)] py-6 text-left transition-colors hover:bg-card"
+              >
+                <ChevronRight
+                  className={`h-4 w-4 shrink-0 text-primary transition-transform duration-300 ${
+                    isOpen ? "rotate-90" : ""
+                  }`}
+                />
+                <span className="font-display text-[clamp(1.3rem,2.2vw,1.9rem)] font-extrabold tracking-[-0.025em]">
+                  {bin.name}
+                </span>
+                <span className="meta ml-auto shrink-0">{bin.items.length}</span>
+              </button>
+
+              {isOpen && (
+                <motion.ul
+                  initial={reduce ? false : { opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="px-[var(--gutter)] pb-7"
+                >
+                  {bin.items.map((item) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-3 border-t border-border py-2.5 pl-8 text-[0.95rem] text-muted-foreground"
+                    >
+                      <span className="h-1.5 w-4 shrink-0 bg-primary/60" aria-hidden="true" />
+                      {item}
+                    </li>
+                  ))}
+                </motion.ul>
+              )}
             </motion.div>
+          );
+        })}
+      </div>
+
+      <div className="inner mt-[clamp(2.5rem,5vw,4rem)]">
+        <h3 className="font-display text-[clamp(1.4rem,2.6vw,2.2rem)] font-extrabold tracking-[-0.03em]">
+          Craft
+        </h3>
+        <div className="mt-6 flex flex-wrap gap-2.5">
+          {craft.map((item) => (
+            <span key={item} className="chip hover:border-primary hover:text-primary">
+              {item}
+            </span>
           ))}
         </div>
-
-        {/* Preferences | Skills */}
-        <motion.div
-          initial={{ opacity: 0, y: 38 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-[clamp(3rem,6vw,5rem)]"
-        >
-          <h3 className="flex items-baseline gap-4 font-display font-extrabold text-[clamp(1.7rem,4vw,3rem)] tracking-[-0.02em]">
-            Preferences <span className="text-muted-foreground font-normal">|</span> Skills
-          </h3>
-          <div className="mt-6 flex flex-wrap gap-2.5">
-            {preferencesSkills.map((s) => (
-              <span key={s} className="chip hover:border-primary hover:text-primary transition-colors">
-                {s}
-              </span>
-            ))}
-          </div>
-        </motion.div>
       </div>
     </section>
   );
