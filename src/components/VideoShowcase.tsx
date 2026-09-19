@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { Play, X, ChevronLeft, ChevronRight } from "lucide-react";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import DriveImage from "@/components/DriveImage";
 
 type Video = { id: string; title: string; kind: string };
@@ -142,6 +142,7 @@ const VideoShowcase = () => {
         <DialogContent className="max-w-[min(1200px,94vw)] border-border bg-background p-0 [&>button]:hidden">
           {active !== null && (
             <div>
+              <DialogTitle className="sr-only">{allVideos[active].title}</DialogTitle>
               <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-3.5">
                 <div className="min-w-0">
                   <p className="truncate font-display text-lg font-extrabold tracking-[-0.02em]">

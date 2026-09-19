@@ -14,9 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
-        body: ['"Geist"', 'system-ui', 'sans-serif'],
-        mono: ['"Geist Mono"', 'ui-monospace', 'monospace'],
+        display: ['"Archivo"', 'system-ui', 'sans-serif'],
+        body: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
+        mono: ['"Source Code Pro"', 'ui-monospace', 'monospace'],
       },
       colors: {
         border: "hsl(var(--border))",

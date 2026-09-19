@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowLeft, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Link } from "react-router-dom";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { illustrationIds } from "@/data/illustrations";
 import DriveImage from "@/components/DriveImage";
 
@@ -74,6 +74,7 @@ const GraphicsPortfolio = () => {
         <DialogContent className="max-w-[min(1100px,94vw)] border-border bg-background p-0 [&>button]:hidden">
           {active !== null && (
             <div>
+              <DialogTitle className="sr-only">Illustration {active + 1}</DialogTitle>
               <div className="flex items-center justify-between gap-4 border-b border-border px-5 py-3.5">
                 <p className="meta">
                   {active + 1} of {illustrationIds.length}

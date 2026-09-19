@@ -28,7 +28,7 @@ const HeroSection = () => {
 
         <motion.h1
           {...rise(0.14)}
-          className="font-display text-[clamp(3.2rem,11vw,9.5rem)] font-extrabold leading-[0.86] tracking-[-0.045em]"
+          className="font-display text-[clamp(3rem,9.5vw,8.5rem)] font-black leading-[0.88] tracking-[-0.03em]"
         >
           Brian
           <br />
@@ -83,7 +83,10 @@ const HeroSection = () => {
         </motion.div>
 
         {/* Playhead ruler along the panel foot */}
-        <div className="relative h-8 border-t border-border bg-card" aria-hidden="true">
+        <div
+          className="relative h-8 overflow-hidden border-t border-border bg-card"
+          aria-hidden="true"
+        >
           <div className="ruler absolute inset-x-0 top-0 h-2.5 opacity-70" />
           {/* transform-only playhead: the wrapper is full width, so x:34% lands at 34% of the ruler */}
           <motion.div

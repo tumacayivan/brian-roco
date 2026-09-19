@@ -15,7 +15,7 @@ const ContactSection = () => {
         >
           <a
             href="mailto:rocobrian06@gmail.com"
-            className="group block font-display text-[clamp(2.6rem,12vw,11rem)] font-extrabold leading-[0.86] tracking-[-0.045em]"
+            className="group block font-display text-[clamp(2.4rem,10vw,9rem)] font-black leading-[0.88] tracking-[-0.03em]"
           >
             Let&rsquo;s cut
             <br />
